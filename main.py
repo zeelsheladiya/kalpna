@@ -11,7 +11,7 @@ with dpg.window(tag="Primary Window"):
     slider_float = dpg.add_slider_float(label="Slide to the right!", width=100)
 
     dpg.add_simple_plot(label="Simpleplot1", default_value=(0.3, 0.9, 0.5, 0.3), height=300)
-    dpg.add_3d_slider(label="3d Slider")
+    dpg.add_slider_int(label="slider")
 
 dpg.create_viewport(title='Custom Title', width=600, height=200)
 dpg.setup_dearpygui()
