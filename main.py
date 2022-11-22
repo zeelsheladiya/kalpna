@@ -8,11 +8,12 @@ def print_text():
 with dpg.window(tag="Primary Window"):
     dpg.add_text("Kalpna")
 
-    dpg.add_listbox(("zeel","zeel","zeel"))
+    dpg.add_combo(["zeel","zeel"],default_value="Plot",width=250, tag="plot")
 
     button1 = dpg.add_button(label="Press Me!", callback=print_text)
 
-    dpg.add_simple_plot(label="Simpleplot1", default_value=(0.3, 0.9, 0.5, 0.3), height=300)
+    with dpg.plot(label="Sine curve", height=300, width=400):
+        pass
 
 dpg.create_viewport(title='Custom Title', width=800, height=800)
 dpg.setup_dearpygui()
