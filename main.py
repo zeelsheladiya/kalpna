@@ -5,7 +5,8 @@ dpg.create_context()
 def print_text():
     print("yoyo")
 
-with dpg.window(tag="Primary Window"):
+def init_main_tab():
+
     dpg.add_text("Kalpna")
 
     dpg.add_combo(["zeel","zeel"],default_value="Plot",width=250, tag="plot")
@@ -15,7 +16,19 @@ with dpg.window(tag="Primary Window"):
     with dpg.plot(label="Sine curve", height=300, width=400):
         pass
 
-dpg.create_viewport(title='Custom Title', width=800, height=800)
+
+
+with dpg.window(tag="Primary Window"):
+
+    with dpg.tab_bar():
+
+        with dpg.tab(label="Main"):
+
+            init_main_tab()
+
+
+
+dpg.create_viewport(title='Custom Title', width=800, height=500)
 dpg.setup_dearpygui()
 dpg.show_viewport()
 dpg.set_primary_window("Primary Window", True)
