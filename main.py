@@ -2,16 +2,18 @@ import dearpygui.dearpygui as dpg
 
 dpg.create_context()
 
-def print_text():
-    print("yoyo")
+
+def select_file():
+    return "zeel"
 
 def init_main_tab():
 
     dpg.add_text("Kalpna")
 
-    dpg.add_combo(["zeel","zeel"],default_value="Plot",width=250, tag="plot")
+    selected_file_type = dpg.add_combo(["CSV","Excel"],default_value="CSV",width=250, tag="plot", label="Select File Type")
 
-    button1 = dpg.add_button(label="Press Me!", callback=print_text)
+    dpg.add_button(label="Browse", callback=select_file())
+
 
     with dpg.plot(label="Sine curve", height=300, width=400):
         pass
