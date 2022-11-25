@@ -1,7 +1,5 @@
 import dearpygui.dearpygui as gui
-import sys
 
-sys.getdefaultencoding()
 
 gui.create_context()
 
