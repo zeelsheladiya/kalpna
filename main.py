@@ -14,6 +14,25 @@ FILE_TYPE = {
 
 DATA_TABLE = pd.DataFrame()
 
+# global component
+TXT_FILE_SELECTION_LOG = 0
+
+
+# Themes
+with gui.theme() as global_theme:
+    with gui.theme_component(gui.mvAll):
+        gui.add_theme_style(gui.mvStyleVar_FrameRounding, 5, category=gui.mvThemeCat_Core)
+        gui.add_theme_style(gui.mvStyleVar_FrameBorderSize, 1, category=gui.mvThemeCat_Core)
+        gui.add_theme_style(gui.mvStyleVar_ButtonTextAlign, x=0.50, y=0.50, category=gui.mvThemeCat_Core)
+
+with gui.theme() as green_txt_color_theme:
+    with gui.theme_component(gui.mvText):
+        gui.add_theme_color(gui.mvThemeCol_Text, (0, 255, 0), category=gui.mvThemeCat_Core)
+
+with gui.theme() as red_txt_color_theme:
+    with gui.theme_component(gui.mvText):
+        gui.add_theme_color(gui.mvThemeCol_Text, (255, 0, 0), category=gui.mvThemeCat_Core)
+
 
 # event section
 def btn_browse_file_browse_callback(sender, _, user_data):
@@ -31,11 +50,14 @@ def btn_browse_file_browse_callback(sender, _, user_data):
 
     gui.set_value("txt_file_log", FILE_PATH)
     gui.set_value("txt_file_selected_log", "File is Selected")
-    # gui.add_color_value("txt_file_selected_log", (0, 255, 0))
+    gui.bind_item_theme(TXT_FILE_SELECTION_LOG, green_txt_color_theme)
+
 
 # tab section
 def init_main_tab():
     # file type sector
+    global TXT_FILE_SELECTION_LOG
+
     gui.add_combo(["CSV", "Excel"], default_value="CSV", width=400, tag="cb_file_type_main_tab",
                   label="Select File Type")
 
@@ -44,16 +66,19 @@ def init_main_tab():
 
     # file selection section
     gui.add_input_text(tag="txt_file_log", enabled=False)
-    gui.add_text("File Not Selected", tag="txt_file_selected_log", color=(255, 0, 0))
-
+    TXT_FILE_SELECTION_LOG = gui.add_text("File Not Selected", tag="txt_file_selected_log")
+    gui.bind_item_theme(TXT_FILE_SELECTION_LOG, red_txt_color_theme)
     # table for visualization data
 
 
-with gui.window(tag="primary_window"):
+with gui.window(tag="primary_window") as primary_win:
     with gui.tab_bar():
         with gui.tab(label="main_tab"):
             init_main_tab()
 
+# gui.show_debug()
+gui.show_style_editor()
+gui.bind_theme(global_theme)
 gui.create_viewport(title='Kalpana')
 gui.setup_dearpygui()
 gui.show_viewport()
