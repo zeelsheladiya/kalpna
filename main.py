@@ -13,17 +13,19 @@ from Msg_Str.msg_str import *
 gui.create_context()
 
 # global variable ============================================================================
-FILE_PATH = ""
+
+FILE_PATH: str
 
 FILE_TYPE = {
     "CSV": "csv",
     "Excel": "xlsx"
 }
 
-DATA_TABLE = pd.DataFrame()
+DATA_TABLE: pd.DataFrame()
 
-# global component
-TXT_FILE_SELECTION_LOG = 0
+# global component =======================================================================================
+
+TXT_FILE_SELECTION_LOG: int
 
 # Themes ==================================================================================================
 # global main theme
@@ -48,8 +50,8 @@ with gui.theme() as red_txt_color_theme:
 # browse button click event
 def btn_main_tab_browse_file_browse_callback(sender, _, user_data):
     global FILE_PATH, DATA_TABLE
-    print(f'sender:- {sender}')
-    print(f'user data:- {user_data}')
+    # print("sender:- ", sender)
+    # print("refuser data:- ", user_data)
     file_type_name = gui.get_value("cb_file_type_main_tab")
 
     FILE_PATH = easygui.fileopenbox(msg=f'Please locate the {file_type_name} file',
@@ -71,7 +73,8 @@ def btn_main_tab_browse_file_browse_callback(sender, _, user_data):
         gui.bind_item_theme(TXT_FILE_SELECTION_LOG, green_txt_color_theme)
 
     except (pd.errors.ParserError, SystemError):
-        basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str, button_name="Retry To Browse File")
+        basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str,
+                    button_name="Retry To Browse File")
 
 
 # tab section==============================================================================================
@@ -84,7 +87,8 @@ def init_main_tab():
                   label="Select File Type")
 
     # browse button
-    gui.add_button(label="Browse", callback=btn_main_tab_browse_file_browse_callback, user_data="btn_main_tab_browse", width=200)
+    gui.add_button(label="Browse", callback=btn_main_tab_browse_file_browse_callback, user_data="btn_main_tab_browse",
+                   width=200)
 
     # file selection section
     gui.add_input_text(tag="txt_file_log", enabled=False)
