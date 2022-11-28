@@ -71,7 +71,7 @@ def btn_main_tab_browse_file_browse_callback(sender, _, user_data):
         gui.bind_item_theme(TXT_FILE_SELECTION_LOG, green_txt_color_theme)
 
     except (pd.errors.ParserError, SystemError):
-        basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str)
+        basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str, button_name="Retry To Browse File")
 
 
 # tab section==============================================================================================
