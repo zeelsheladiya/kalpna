@@ -2,6 +2,7 @@ import dearpygui.dearpygui as gui
 import easygui
 import pandas as pd
 
+
 gui.create_context()
 
 
@@ -38,7 +39,8 @@ with gui.theme() as red_txt_color_theme:
         gui.add_theme_color(gui.mvThemeCol_Text, (255, 0, 0), category=gui.mvThemeCat_Core)
 
 
-# event section
+# event section ===============================================================================
+# browse button click event
 def btn_browse_file_browse_callback(sender, _, user_data):
     global FILE_PATH, DATA_TABLE
     print(f'sender:- {sender}')
@@ -49,7 +51,12 @@ def btn_browse_file_browse_callback(sender, _, user_data):
                                     default=f"*.{FILE_TYPE[file_type_name]}",
                                     filetypes=[f"*.{FILE_TYPE[file_type_name]}"])
 
-    DATA_TABLE = pd.read_csv(FILE_PATH)
+    if list(FILE_TYPE.values())[0] == FILE_TYPE[file_type_name]:
+        DATA_TABLE = pd.read_csv(FILE_PATH)
+
+    elif list(FILE_TYPE.values())[1] == FILE_TYPE[file_type_name]:
+        DATA_TABLE = pd.read_excel(FILE_PATH)
+
     print(DATA_TABLE)
 
     gui.set_value("txt_file_log", FILE_PATH)
@@ -57,12 +64,13 @@ def btn_browse_file_browse_callback(sender, _, user_data):
     gui.bind_item_theme(TXT_FILE_SELECTION_LOG, green_txt_color_theme)
 
 
-# tab section
+# tab section=========================================================================================
+# main inntial tab
 def init_main_tab():
     # file type sector
-    global TXT_FILE_SELECTION_LOG
+    global TXT_FILE_SELECTION_LOG, FILE_TYPE
 
-    gui.add_combo(["CSV", "Excel"], default_value="CSV", width=400, tag="cb_file_type_main_tab",
+    gui.add_combo(list(FILE_TYPE), default_value="CSV", width=400, tag="cb_file_type_main_tab",
                   label="Select File Type")
 
     # browse button
@@ -72,13 +80,20 @@ def init_main_tab():
     gui.add_input_text(tag="txt_file_log", enabled=False)
     TXT_FILE_SELECTION_LOG = gui.add_text("File Not Selected", tag="txt_file_selected_log")
     gui.bind_item_theme(TXT_FILE_SELECTION_LOG, red_txt_color_theme)
+
     # table for visualization data
 
 
+# main windows with tabs ==========================================================
 with gui.window(tag="primary_window") as primary_win:
+    # init window
     with gui.tab_bar():
+        # main tab
         with gui.tab(label="main_tab"):
             init_main_tab()
+
+
+# GUI functions ===============================================================
 
 # gui.show_debug()
 gui.show_style_editor()

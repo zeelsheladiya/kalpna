@@ -3,3 +3,5 @@ dearpygui==1.8.0
 easygui~=0.98.3
 
 pandas~=1.5.2
+
+openpyxl~=3.0.10
