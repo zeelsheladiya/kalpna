@@ -104,7 +104,7 @@ with gui.window(tag="primary_window") as primary_win:
 # GUI functions ==============================================================================================
 
 # gui.show_debug()
-gui.show_style_editor()
+# gui.show_style_editor()
 gui.bind_theme(global_theme)
 gui.create_viewport(title='Kalpana')
 gui.setup_dearpygui()
