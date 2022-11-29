@@ -71,6 +71,14 @@ def btn_main_tab_browse_file_browse_callback(sender, _, user_data):
         gui.set_value("txt_file_log", FILE_PATH)
         gui.set_value("txt_file_selected_log", "File is Selected")
         gui.bind_item_theme(TXT_FILE_SELECTION_LOG, green_txt_color_theme)
+        
+        # with gui.table(label='DatasetTable'):
+        #     for i in range(DATA_TABLE.shape[1]):
+        #         gui.add_table_column(label=DATA_TABLE.columns[i])
+        #     for i in range(n):
+        #         with gui.table_row():
+        #             for j in range(DATA_TABLE.shape[1]):
+        #                 gui.add_text(f"{DATA_TABLE.iloc[i,j]}")
 
     except (pd.errors.ParserError, SystemError):
         basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str,
