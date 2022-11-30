@@ -6,6 +6,7 @@ import pandas as pd
 
 from Popups.Popups import *
 from Msg_Str.msg_str import *
+from Main_tab.table_rander import *
 
 # ==============================================================================================
 
@@ -73,19 +74,7 @@ def btn_main_tab_browse_file_browse_callback(sender, _, user_data):
         gui.bind_item_theme(TXT_FILE_SELECTION_LOG, green_txt_color_theme)
 
         # table view
-        with gui.table(header_row=True, row_background=True,
-                       borders_innerH=True, borders_outerH=True, borders_innerV=True,
-                       borders_outerV=True, parent="main_tab"):
-
-            for i in list(DATA_TABLE.columns):
-                gui.add_table_column(label=i)
-
-            # print(DATA_TABLE.iloc[1, 2])
-
-            for i in range(DATA_TABLE.shape[0]):
-                with gui.table_row():
-                    for j in range(DATA_TABLE.shape[1]):
-                        gui.add_text(f"{DATA_TABLE.iloc[i, j]}")
+        main_tab_table_view_render(gui=gui, df=DATA_TABLE)
 
     except (pd.errors.ParserError, SystemError):
         basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str,
