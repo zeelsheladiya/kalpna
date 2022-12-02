@@ -76,6 +76,9 @@ def btn_main_tab_browse_file_browse_callback(sender, _, user_data):
         # table view
         main_tab_table_view_render(gui=gui, df=DATA_TABLE)
 
+        with gui.tab(label="node_tab", tag="node_tab", parent="main_tab_bar"):
+            pass
+
     except (pd.errors.ParserError, SystemError):
         basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str,
                     button_name="Retry To Browse File")
@@ -103,10 +106,11 @@ def init_main_tab():
 # main windows with tabs ====================================================================================
 with gui.window(tag="primary_window") as primary_win:
     # init window
-    with gui.tab_bar():
+    with gui.tab_bar(tag="main_tab_bar"):
         # main tab
         with gui.tab(label="main_tab", tag="main_tab"):
             init_main_tab()
+
 
 # GUI functions ==============================================================================================
 
