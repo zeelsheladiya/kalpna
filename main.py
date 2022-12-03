@@ -7,26 +7,15 @@ import pandas as pd
 from Popups.Popups import *
 from Msg_Str.msg_str import *
 from Main_tab.table_rander import *
+from Global_variable.global_variable import *
 
 # ==============================================================================================
-
 
 gui.create_context()
 
 # global variable ============================================================================
 
-FILE_PATH: str
-
-FILE_TYPE = {
-    "CSV": "csv",
-    "Excel": "xlsx"
-}
-
 DATA_TABLE: pd.DataFrame()
-
-# global component =======================================================================================
-
-TXT_FILE_SELECTION_LOG: int
 
 # Themes ==================================================================================================
 # global main theme
