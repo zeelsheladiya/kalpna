@@ -2,20 +2,31 @@ import dearpygui.dearpygui as gui
 import easygui
 import pandas as pd
 
+
 # internal file importing ======================================================================
 
 from Popups.Popups import *
 from Msg_Str.msg_str import *
 from Main_tab.table_rander import *
-from Global_variable.global_variable import *
+
+# global variable ============================================================================
+
+FILE_PATH: str
+
+FILE_TYPE = {
+    "CSV": "csv",
+    "Excel": "xlsx"
+}
+
+DATA_TABLE: pd.DataFrame()
+
+# global component =======================================================================================
+
+TXT_FILE_SELECTION_LOG: int
 
 # ==============================================================================================
 
 gui.create_context()
-
-# global variable ============================================================================
-
-DATA_TABLE: pd.DataFrame()
 
 # Themes ==================================================================================================
 # global main theme
@@ -38,7 +49,7 @@ with gui.theme() as red_txt_color_theme:
 
 # event section ===========================================================================================
 # browse button click event
-def btn_main_tab_browse_file_browse_callback(sender, _, user_data):
+def btn_main_tab_browse_file_browse_callback():
     global FILE_PATH, DATA_TABLE
     # print("sender:- ", sender)
     # print("refuser data:- ", user_data)
@@ -65,7 +76,7 @@ def btn_main_tab_browse_file_browse_callback(sender, _, user_data):
         # table view
         main_tab_table_view_render(gui=gui, df=DATA_TABLE)
 
-        with gui.tab(label="node_tab", tag="node_tab", parent="main_tab_bar"):
+        with gui.tab(label="node tab", tag="node_tab", parent="main_tab_bar"):
             pass
 
     except (pd.errors.ParserError, SystemError):
@@ -97,9 +108,8 @@ with gui.window(tag="primary_window") as primary_win:
     # init window
     with gui.tab_bar(tag="main_tab_bar"):
         # main tab
-        with gui.tab(label="main_tab", tag="main_tab"):
+        with gui.tab(label="main tab", tag="main_tab"):
             init_main_tab()
-
 
 # GUI functions ==============================================================================================
 
