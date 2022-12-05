@@ -103,7 +103,7 @@ def btn_main_tab_browse_file_browse_callback():
                     with gui.node_attribute(label="Node A2", attribute_type=gui.mvNode_Attr_Output):
                         gui.add_input_float(label="F2", width=150)
 
-                with gui.node(label="Node 2"):
+                with gui.node(label="Node 2"):                                        
                     with gui.node_attribute(label="Node A3"):
                         gui.add_input_float(label="F3", width=200)
 
