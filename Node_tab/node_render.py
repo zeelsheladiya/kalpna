@@ -24,8 +24,10 @@ def node_render(gui):
 
     gui.delete_item("node_tab")
 
+    # node tab
     with gui.tab(label="node tab", tag="node_tab", parent="main_tab_bar"):
 
+        # node editor ground
         with gui.node_editor(callback=link_callback, delink_callback=delink_callback, user_data=gui):
             with gui.node(label="Node 1"):
                 with gui.node_attribute(label="Node A1"):
