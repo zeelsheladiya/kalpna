@@ -6,6 +6,7 @@
 # callback runs when user attempts to connect attributes
 def link_callback(sender, app_data, gui):
     # app_data -> (link_id1, link_id2)
+
     gui.add_node_link(app_data[0], app_data[1], parent=sender)
 
 

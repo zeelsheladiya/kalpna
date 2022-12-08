@@ -87,8 +87,10 @@ def btn_main_tab_browse_file_browse_callback():
         with gui.tab(label="node tab", tag="node_tab", parent="main_tab_bar"):
 
             # node editor ground
-            with gui.node_editor(callback=link_callback, delink_callback=delink_callback, user_data=gui, minimap=True, minimap_location=True):
-                pass
+            with gui.node_editor(tag="node_ground_node_tab", callback=link_callback, delink_callback=delink_callback, user_data=gui, minimap=True, minimap_location=True, menubar=True):
+
+                with gui.popup("node_tab"):
+                    gui.add_text("A popup")
 
     except (pd.errors.ParserError, SystemError) as error:
         basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str,
