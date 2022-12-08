@@ -93,9 +93,9 @@ def btn_main_tab_browse_file_browse_callback():
                         with gui.node_attribute(tag=header):
                             gui.add_input_text(value=header, width=400)
 
-    except (pd.errors.ParserError, SystemError):
+    except (pd.errors.ParserError, SystemError) as error:
         basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str,
-                    button_name="Retry To Browse File")
+                    button_name="Retry To Browse File", error=str(error))
 
 
 # tab section==============================================================================================
