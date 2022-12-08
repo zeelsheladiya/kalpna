@@ -79,7 +79,7 @@ def btn_main_tab_browse_file_browse_callback():
         main_tab_table_view_render(gui=gui, df=DATA_TABLE)
 
         # node tab ==========================================================
-        node_render(gui=gui)
+        node_render(gui=gui, DATA_TABLE=DATA_TABLE)
 
     except (pd.errors.ParserError, SystemError):
         basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str,
