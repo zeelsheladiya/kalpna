@@ -79,7 +79,19 @@ def btn_main_tab_browse_file_browse_callback():
         main_tab_table_view_render(gui=gui, df=DATA_TABLE)
 
         # node tab ==========================================================
-        node_render(gui=gui, DATA_TABLE=DATA_TABLE)
+        # node_render(gui=gui, DATA_TABLE=DATA_TABLE)
+
+        gui.delete_item("node_tab")
+
+        # node tab
+        with gui.tab(label="node tab", tag="node_tab", parent="main_tab_bar"):
+
+            # node editor ground
+            with gui.node_editor(callback=link_callback, delink_callback=delink_callback, user_data=gui):
+                with gui.node(label="Table"):
+                    for header in DATA_TABLE.columns:
+                        with gui.node_attribute(tag=header):
+                            gui.add_input_text(value=header, width=400)
 
     except (pd.errors.ParserError, SystemError):
         basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str,
