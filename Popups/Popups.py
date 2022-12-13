@@ -1,10 +1,21 @@
 # popups =================================================================================================
 
-def basic_popup(gui=None, easygui=None, title: str = "", message: str = "", button_name: str = "OK", error: str = "Not defined"):
+# TODO: need to make pop centered
+def basic_popup(gui=None, parent_window_name: str = "primary_window", title: str = "", message: str = "", button_name: str = "OK", error: str = "Not defined"):
 
     try:
-        easygui.msgbox(message + "\n" + "error := " + error, title, button_name)
-        # popup_output = easygui.msgbox(message, title, button_name)
-        # print(f'Basic popup output:- {popup_output}')
+        main_width = gui.get_item_width(parent_window_name)
+        main_height = gui.get_item_height(parent_window_name)
+
+        with gui.window(label=title, modal=True, show=True, tag="modal_id"):
+            gui.add_text(message)
+            gui.add_text(error)
+            gui.add_separator()
+            # gui.add_checkbox(label="Don't ask me next time")
+            with gui.group(horizontal=True):
+                gui.add_button(label=button_name, width=150, callback=lambda: gui.configure_item("modal_id", show=False))
+
+        gui.set_item_pos("modal_id", (int(0.2 * main_width), int(0.4 * main_height)))
+
     except Exception as e:
         pass

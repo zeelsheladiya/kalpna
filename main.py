@@ -1,5 +1,4 @@
 import dearpygui.dearpygui as gui
-import easygui
 import pandas as pd
 
 # internal file importing ======================================================================
@@ -77,7 +76,7 @@ def file_browse_for_table_callback(_, app_data):
         # node_render(gui=gui, DATA_TABLE=DATA_TABLE)
 
         gui.delete_item("node_tab")
-
+        gui
         # node tab
         with gui.tab(label="node tab", tag="node_tab", parent="main_tab_bar"):
 
@@ -87,8 +86,8 @@ def file_browse_for_table_callback(_, app_data):
                 with gui.popup("node_tab"):
                     gui.add_text("A popup")
 
-    except (pd.errors.ParserError, SystemError) as error:
-        basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str,
+    except (pd.errors.ParserError, SystemError, FileNotFoundError) as error:
+        basic_popup(gui=gui, parent_window_name="primary_window", title=error_msg_title, message=file_not_support_msg_str,
                     button_name="Retry To Browse File", error=str(error))
 
 
@@ -103,7 +102,8 @@ def btn_main_tab_browse_file_browse_callback():
     # browse file
     with gui.file_dialog(directory_selector=False, callback=file_browse_for_table_callback, show=True,
                          height=600, width=800):
-        gui.add_file_extension(f".{FILE_TYPE[file_type_name]}", color=(0, 255, 0))
+        # gui.add_file_extension(f".{FILE_TYPE[file_type_name]}", color=(0, 255, 0))
+        gui.add_file_extension(f".*", color=(0, 255, 0))
 
 
 # tab section==============================================================================================
@@ -120,7 +120,7 @@ def init_main_tab():
                    width=200)
 
     # file selection section
-    gui.add_input_text(tag="txt_file_log", enabled=False)
+    gui.add_input_text(tag="txt_file_log_main_tab", enabled=False)
     TXT_FILE_SELECTION_LOG = gui.add_text("File Not Selected", tag="txt_file_selected_log")
     gui.bind_item_theme(TXT_FILE_SELECTION_LOG, red_txt_color_theme)
 
