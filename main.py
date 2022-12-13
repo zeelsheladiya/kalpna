@@ -49,18 +49,13 @@ with gui.theme() as red_txt_color_theme:
 
 # event section ===========================================================================================
 
-
-# browse button click event
-def btn_main_tab_browse_file_browse_callback():
+# file browsed file name
+def file_browse_for_table_callback(_, app_data):
     global FILE_PATH, DATA_TABLE
-    # print("sender:- ", sender)
-    # print("refuser data:- ", user_data)
-    file_type_name = gui.get_value("cb_file_type_main_tab")
+    # print("App Data: ", app_data["file_path_name"])
+    FILE_PATH = app_data["file_path_name"]
 
-    FILE_PATH = easygui.fileopenbox(msg=f'Please locate the {file_type_name} file',
-                                    default=f"*.{FILE_TYPE[file_type_name]}",
-                                    filetypes=[f"*.{FILE_TYPE[file_type_name]}"],
-                                    multiple=False)
+    file_type_name = gui.get_value("cb_file_type_main_tab")
 
     try:
         if list(FILE_TYPE.values())[0] == FILE_TYPE[file_type_name]:
@@ -87,14 +82,28 @@ def btn_main_tab_browse_file_browse_callback():
         with gui.tab(label="node tab", tag="node_tab", parent="main_tab_bar"):
 
             # node editor ground
-            with gui.node_editor(tag="node_ground_node_tab", callback=link_callback, delink_callback=delink_callback, user_data=gui, minimap=True, minimap_location=True, menubar=True):
-
+            with gui.node_editor(tag="node_ground_node_tab", callback=link_callback, delink_callback=delink_callback,
+                                 user_data=gui, minimap=True, minimap_location=True, menubar=True):
                 with gui.popup("node_tab"):
                     gui.add_text("A popup")
 
     except (pd.errors.ParserError, SystemError) as error:
         basic_popup(easygui=easygui, title=error_msg_title, message=file_not_support_msg_str,
                     button_name="Retry To Browse File", error=str(error))
+
+
+# browse button click event
+def btn_main_tab_browse_file_browse_callback():
+    global FILE_PATH, DATA_TABLE
+    # print("sender:- ", sender)
+    # print("refuser data:- ", user_data)
+
+    file_type_name = gui.get_value("cb_file_type_main_tab")
+
+    # browse file
+    with gui.file_dialog(directory_selector=False, callback=file_browse_for_table_callback, show=True,
+                         height=600, width=800):
+        gui.add_file_extension(f".{FILE_TYPE[file_type_name]}", color=(0, 255, 0))
 
 
 # tab section==============================================================================================
