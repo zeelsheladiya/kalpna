@@ -49,6 +49,7 @@ with gui.theme() as red_txt_color_theme:
 # event section ===========================================================================================
 
 # file browsed file name
+# TODO: need to fix file is not supported issue
 def file_browse_for_table_callback(_, app_data):
     global FILE_PATH, DATA_TABLE
     # print("App Data: ", app_data["file_path_name"])
@@ -76,7 +77,7 @@ def file_browse_for_table_callback(_, app_data):
         # node_render(gui=gui, DATA_TABLE=DATA_TABLE)
 
         gui.delete_item("node_tab")
-        gui
+
         # node tab
         with gui.tab(label="node tab", tag="node_tab", parent="main_tab_bar"):
 
@@ -102,8 +103,7 @@ def btn_main_tab_browse_file_browse_callback():
     # browse file
     with gui.file_dialog(directory_selector=False, callback=file_browse_for_table_callback, show=True,
                          height=600, width=800):
-        # gui.add_file_extension(f".{FILE_TYPE[file_type_name]}", color=(0, 255, 0))
-        gui.add_file_extension(f".*", color=(0, 255, 0))
+        gui.add_file_extension(f".{FILE_TYPE[file_type_name]}", color=(0, 255, 0))
 
 
 # tab section==============================================================================================

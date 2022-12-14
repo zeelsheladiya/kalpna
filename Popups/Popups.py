@@ -1,5 +1,6 @@
 # popups =================================================================================================
 
+# TODO: need to make pop centered
 def basic_popup(gui=None, parent_window_name: str = "primary_window", title: str = "", message: str = "", button_name: str = "OK", error: str = "Not defined"):
 
     try:
