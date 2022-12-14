@@ -1,6 +1,5 @@
 # popups =================================================================================================
 
-# TODO: need to make pop centered
 def basic_popup(gui=None, parent_window_name: str = "primary_window", title: str = "", message: str = "", button_name: str = "OK", error: str = "Not defined"):
 
     try:
@@ -18,4 +17,5 @@ def basic_popup(gui=None, parent_window_name: str = "primary_window", title: str
         gui.set_item_pos("modal_id", (int(0.2 * main_width), int(0.4 * main_height)))
 
     except Exception as e:
+        # need to something but not that important
         pass
