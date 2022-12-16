@@ -45,8 +45,8 @@ def main_tab_table_view_render(gui=None, df=None):
     # main table form
     with gui.table(header_row=True, row_background=True,
                    borders_innerH=True, borders_outerH=True, borders_innerV=True,
-                   borders_outerV=True, parent="main_tab", tag="main_tab_table_view", sortable=True, user_data=gui
-                   ):
+                   borders_outerV=True, parent="main_tab", tag="main_tab_table_view", sortable=True, user_data=gui,
+                   resizable=True, policy=gui.mvTable_SizingStretchProp):
 
         # header part
         for i in list(df.columns):
