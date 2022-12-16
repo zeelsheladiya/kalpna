@@ -83,8 +83,9 @@ def file_browse_for_table_callback(_, app_data):
 
             # node editor ground
             with gui.node_editor(tag="node_ground_node_tab", callback=link_callback, delink_callback=delink_callback,
-                                 user_data=gui, minimap=True, minimap_location=True, menubar=True):
-                with gui.popup("node_tab"):
+                                 user_data=gui, minimap=True, minimap_location=True, parent="node_tab"):
+
+                with gui.popup(parent="node_tab"):
                     gui.add_text("A popup")
 
     except (pd.errors.ParserError, SystemError, FileNotFoundError) as error:
