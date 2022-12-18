@@ -38,6 +38,10 @@ def sort_callback(sender, sort_specs, user_data):
     gui.reorder_items(sender, 1, new_order)
 
 
+def clear_table_view_main_tab(gui):
+    gui.delete_item("main_tab_table_view")
+
+
 def main_tab_table_view_render(gui=None, df=None):
     # table view
     gui.delete_item("main_tab_table_view")
