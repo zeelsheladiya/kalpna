@@ -48,10 +48,11 @@ with gui.theme() as red_txt_color_theme:
 
 # event section ===========================================================================================
 
-def right_click_callback(sender, app_data, user_data):
+def right_click_node_menu_callback():
+    # get active tab based on it position
     if gui.get_item_state("node_tab")["pos"] == [8, 31]:
-        gui.configure_item("right_click_menu", show=True)
-        gui.set_item_pos("right_click_menu", gui.get_mouse_pos())
+        gui.configure_item("right_click_menu_node_menu", show=True)
+        gui.set_item_pos("right_click_menu_node_menu", gui.get_mouse_pos())
 
 
 # file browsed file name
@@ -92,10 +93,10 @@ def file_browse_for_table_callback(_, app_data):
                                  user_data=gui, minimap=True, minimap_location=True, parent="node_tab"):
 
                 with gui.handler_registry():
-                    gui.add_mouse_click_handler(button=gui.mvMouseButton_Right, callback=right_click_callback)
+                    gui.add_mouse_click_handler(button=gui.mvMouseButton_Right, callback=right_click_node_menu_callback)
 
-                with gui.window(label="Right click window", modal=True, show=False, id="right_click_menu",
-                                no_title_bar=True, tag="right_click_menu"):
+                with gui.window(label="Right click node menu", modal=True, show=False, id="right_click_menu_node_menu",
+                                no_title_bar=True, tag="right_click_menu_node_menu"):
 
                     gui.add_text("All those beautiful files will be deleted.\nThis operation cannot be undone!")
                     gui.add_separator()
