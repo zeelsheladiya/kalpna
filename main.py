@@ -95,17 +95,12 @@ def file_browse_for_table_callback(_, app_data):
                 with gui.handler_registry():
                     gui.add_mouse_click_handler(button=gui.mvMouseButton_Right, callback=right_click_node_menu_callback)
 
+                # TODO: need to do close popup window when click is out of focus
                 with gui.window(label="Right click node menu", modal=True, show=False, id="right_click_menu_node_menu",
                                 no_title_bar=True, tag="right_click_menu_node_menu"):
 
-                    gui.add_text("All those beautiful files will be deleted.\nThis operation cannot be undone!")
-                    gui.add_separator()
-                    gui.add_checkbox(label="Don't ask me next time")
-                    with gui.group(horizontal=True):
-                        gui.add_button(label="OK", width=75,
-                                       callback=lambda: gui.configure_item("right_click_menu", show=False))
-                        gui.add_button(label="Cancel", width=75,
-                                       callback=lambda: gui.configure_item("right_click_menu", show=False))
+                    gui.add_text("Table")
+                    gui.add_text("Filter")
 
     except (pd.errors.ParserError, SystemError, FileNotFoundError) as error:
         # print(str(error))
