@@ -48,6 +48,12 @@ with gui.theme() as red_txt_color_theme:
 
 # event section ===========================================================================================
 
+def right_click_callback(sender, app_data, user_data):
+    if gui.get_item_state("node_tab")["pos"] == [8, 31]:
+        gui.configure_item("right_click_menu", show=True)
+        gui.set_item_pos("right_click_menu", gui.get_mouse_pos())
+
+
 # file browsed file name
 # TODO: need to fix file is not supported issue
 def file_browse_for_table_callback(_, app_data):
@@ -84,8 +90,21 @@ def file_browse_for_table_callback(_, app_data):
             # node editor ground
             with gui.node_editor(tag="node_ground_node_tab", callback=link_callback, delink_callback=delink_callback,
                                  user_data=gui, minimap=True, minimap_location=True, parent="node_tab"):
-                with gui.popup(parent="node_ground_node_tab"):
-                    gui.add_text("A popup")
+
+                with gui.handler_registry():
+                    gui.add_mouse_click_handler(button=gui.mvMouseButton_Right, callback=right_click_callback)
+
+                with gui.window(label="Right click window", modal=True, show=False, id="right_click_menu",
+                                no_title_bar=True, tag="right_click_menu"):
+
+                    gui.add_text("All those beautiful files will be deleted.\nThis operation cannot be undone!")
+                    gui.add_separator()
+                    gui.add_checkbox(label="Don't ask me next time")
+                    with gui.group(horizontal=True):
+                        gui.add_button(label="OK", width=75,
+                                       callback=lambda: gui.configure_item("right_click_menu", show=False))
+                        gui.add_button(label="Cancel", width=75,
+                                       callback=lambda: gui.configure_item("right_click_menu", show=False))
 
     except (pd.errors.ParserError, SystemError, FileNotFoundError) as error:
         # print(str(error))
