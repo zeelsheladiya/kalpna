@@ -84,15 +84,14 @@ def file_browse_for_table_callback(_, app_data):
             # node editor ground
             with gui.node_editor(tag="node_ground_node_tab", callback=link_callback, delink_callback=delink_callback,
                                  user_data=gui, minimap=True, minimap_location=True, parent="node_tab"):
-
-                gui.add_mouse_click_handler(parent="node_ground_node_tab", user_data=gui,
-                                            callback=on_right_click_callback)
+                pass
 
     except (pd.errors.ParserError, SystemError, FileNotFoundError) as error:
         # print(str(error))
 
         gui.set_value("txt_file_log_main_tab", "")
         gui.set_value("txt_file_selected_log", "File Not Selected")
+        gui.delete_item("node_tab")
         gui.bind_item_theme(TXT_FILE_SELECTION_LOG, red_txt_color_theme)
 
         basic_popup(gui=gui, parent_window_name="primary_window", title=error_msg_title,
