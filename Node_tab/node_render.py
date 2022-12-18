@@ -1,7 +1,21 @@
 # import dearpygui.dearpygui as gui
 
+# variable for node editor
 
-# node click events
+# Create the popup menu items
+node_menu_items = [
+    {"item1": "Option 1"},
+    {"item2": "Option 2"},
+    {"item3": "Option 3"},
+]
+
+
+# node click events callbacks
+
+def on_right_click_callback(gui):
+    with gui.popup():
+        gui.add_text("A popup")
+
 
 # callback runs when user attempts to connect attributes
 def link_callback(sender, app_data, gui):
