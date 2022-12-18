@@ -1,4 +1,4 @@
-# import dearpygui.dearpygui as gui
+import dearpygui.dearpygui as gui
 
 # variable for node editor
 
@@ -17,7 +17,6 @@ def right_click_node_menu_callback(sender, app_data, user_data):
 # callback runs when user attempts to connect attributes
 def link_callback(sender, app_data, gui):
     # app_data -> (link_id1, link_id2)
-
     gui.add_node_link(app_data[0], app_data[1], parent=sender)
 
 
@@ -31,6 +30,8 @@ def delink_callback(sender, app_data, gui):
 # ============================================================================================
 
 # main node tab
+# this is just for development purpose
+# def node_render():
 def node_render(gui, DATA_TABLE):
     gui.delete_item("node_tab")
 
@@ -49,5 +50,5 @@ def node_render(gui, DATA_TABLE):
             with gui.window(label="Right click node menu", modal=True, show=False, id="right_click_menu_node_menu",
                             no_title_bar=True, tag="right_click_menu_node_menu"):
                 gui.add_text("Table")
-                gui.add_text("Filter")
+
 
