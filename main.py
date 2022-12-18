@@ -48,12 +48,6 @@ with gui.theme() as red_txt_color_theme:
 
 # event section ===========================================================================================
 
-def right_click_node_menu_callback():
-    # get active tab based on it position
-    if gui.get_item_state("node_tab")["pos"] == [8, 31]:
-        gui.configure_item("right_click_menu_node_menu", show=True)
-        gui.set_item_pos("right_click_menu_node_menu", gui.get_mouse_pos())
-
 
 # file browsed file name
 # TODO: need to fix file is not supported issue
@@ -81,26 +75,7 @@ def file_browse_for_table_callback(_, app_data):
         main_tab_table_view_render(gui=gui, df=DATA_TABLE)
 
         # node tab ==========================================================
-        # node_render(gui=gui, DATA_TABLE=DATA_TABLE)
-
-        gui.delete_item("node_tab")
-
-        # node tab
-        with gui.tab(label="node tab", tag="node_tab", parent="main_tab_bar"):
-
-            # node editor ground
-            with gui.node_editor(tag="node_ground_node_tab", callback=link_callback, delink_callback=delink_callback,
-                                 user_data=gui, minimap=True, minimap_location=True, parent="node_tab"):
-
-                with gui.handler_registry():
-                    gui.add_mouse_click_handler(button=gui.mvMouseButton_Right, callback=right_click_node_menu_callback)
-
-                # TODO: need to do close popup window when click is out of focus
-                with gui.window(label="Right click node menu", modal=True, show=False, id="right_click_menu_node_menu",
-                                no_title_bar=True, tag="right_click_menu_node_menu"):
-
-                    gui.add_text("Table")
-                    gui.add_text("Filter")
+        node_render(gui=gui, DATA_TABLE=DATA_TABLE)
 
     except (pd.errors.ParserError, SystemError, FileNotFoundError) as error:
         # print(str(error))
