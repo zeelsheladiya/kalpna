@@ -1,4 +1,4 @@
-import dearpygui.dearpygui as gui
+# import dearpygui.dearpygui as gui
 
 # variable for node editor
 
@@ -31,8 +31,8 @@ def delink_callback(sender, app_data, gui):
 
 # main node tab
 # this is just for development purpose
-def node_render():
-# def node_render(gui, DATA_TABLE):
+# def node_render():
+def node_render(gui, DATA_TABLE):
     gui.delete_item("node_tab")
 
     # node tab
