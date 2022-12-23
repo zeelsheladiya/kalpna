@@ -14,6 +14,15 @@ def right_click_node_menu_callback(sender, app_data, user_data):
         gui.set_item_pos("right_click_menu_node_menu", gui.get_mouse_pos(local=False))
 
 
+def left_click_node_menu_callback(sender, app_data, user_data):
+    gui = user_data["gui"]
+
+    # get active tab based on it position
+    if gui.get_item_state("node_tab")["pos"] == [8, 31]:
+        if gui.get_item_state(gui.get_active_window())["hovered"] is not True:
+            gui.configure_item("right_click_menu_node_menu", show=False)
+
+
 # callback runs when user attempts to connect attributes
 def link_callback(sender, app_data, gui):
     # app_data -> (link_id1, link_id2)
@@ -45,8 +54,9 @@ def node_render(gui, DATA_TABLE):
             with gui.handler_registry():
                 gui.add_mouse_click_handler(button=gui.mvMouseButton_Right, callback=right_click_node_menu_callback,
                                             user_data={"gui": gui})
+                gui.add_mouse_click_handler(button=gui.mvMouseButton_Left, callback=left_click_node_menu_callback,
+                                            user_data={"gui": gui})
 
-            # TODO: need to do close popup window when click is out of focus
             with gui.window(label="Right click node menu", modal=True, show=False, id="right_click_menu_node_menu",
                             no_title_bar=True, tag="right_click_menu_node_menu"):
                 gui.add_text("Table")
