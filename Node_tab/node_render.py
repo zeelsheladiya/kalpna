@@ -38,6 +38,18 @@ def delink_callback(sender, app_data, gui):
 # ============================================================================================
 # ============================================================================================
 
+# node functions
+
+def init_node_menu(gui):
+
+    # TODO: need to solve this error to show combo box at node menu
+    gui.add_combo({"CSV": "csv", "Excel": "xlsx"},
+                  default_value="DataFrame", width=400, tag="cb_node_type_node_tab",
+                  parent="right_click_menu_node_menu")
+
+# ============================================================================================
+# ============================================================================================
+
 # main node tab
 # this is just for development purpose
 # def node_render():
@@ -59,6 +71,6 @@ def node_render(gui, DATA_TABLE):
 
             with gui.window(label="Right click node menu", modal=True, show=False, id="right_click_menu_node_menu",
                             no_title_bar=True, tag="right_click_menu_node_menu"):
-                gui.add_text("Table")
+                init_node_menu(gui=gui)
 
 
