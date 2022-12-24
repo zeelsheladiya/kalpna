@@ -52,8 +52,8 @@ def init_node_menu(gui):
 
 # main node tab
 # this is just for development purpose
-# def node_render():
-def node_render(gui, DATA_TABLE):
+def node_render():
+# def node_render(gui, DATA_TABLE):
     gui.delete_item("node_tab")
 
     # node tab
