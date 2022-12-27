@@ -80,14 +80,14 @@ def file_browse_for_table_callback(_, app_data):
     except (pd.errors.ParserError, SystemError, FileNotFoundError) as error:
         # print(str(error))
 
-        # gui.set_value("txt_file_log_main_tab", "")
-        # gui.set_value("txt_file_selected_log", "File Not Selected")
-        # gui.delete_item("node_tab")
-        # clear_table_view_main_tab(gui)
-        # gui.bind_item_theme(TXT_FILE_SELECTION_LOG, red_txt_color_theme)
-        #
-        # basic_popup(gui=gui, parent_window_name="primary_window", title=error_msg_title,
-        #             message=file_not_support_msg_str, button_name="Retry To Browse File", error=str(error))
+        gui.set_value("txt_file_log_main_tab", "")
+        gui.set_value("txt_file_selected_log", "File Not Selected")
+        gui.delete_item("node_tab")
+        clear_table_view_main_tab(gui)
+        gui.bind_item_theme(TXT_FILE_SELECTION_LOG, red_txt_color_theme)
+
+        basic_popup(gui=gui, parent_window_name="primary_window", title=error_msg_title,
+                    message=file_not_support_msg_str, button_name="Retry To Browse File", error=str(error))
 
 
 # browse button click event
