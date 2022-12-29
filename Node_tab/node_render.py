@@ -43,10 +43,10 @@ def delink_callback(sender, app_data, gui):
 def init_node_menu(gui):
 
     # TODO: need to solve this error to show combo box at node menu or choose different option
-    gui.add_combo({"CSV": "csv", "Excel": "xlsx"},
-                  default_value="DataFrame", width=400, tag="cb_node_type_node_tab",
-                  parent="right_click_menu_node_menu")
-
+    # gui.add_combo({"CSV": "csv", "Excel": "xlsx"},
+    #               default_value="DataFrame", width=400, tag="cb_node_type_node_tab",
+    #               parent="right_click_menu_node_menu")
+    pass
 
 # ============================================================================================
 # ============================================================================================
