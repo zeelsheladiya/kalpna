@@ -51,19 +51,19 @@ with gui.theme() as red_txt_color_theme:
 
 # file browsed file name
 # TODO: need to fix file is not supported issue
-# def file_browse_for_table_callback(_, app_data):
-#     global FILE_PATH, DATA_TABLE
-#     # print("App Data: ", app_data["file_path_name"])
-#     FILE_PATH = app_data["file_path_name"]
-#
-#     file_type_name = gui.get_value("cb_file_type_main_tab")
-#
-#     try:
-#         if list(FILE_TYPE.values())[0] == FILE_TYPE[file_type_name]:
-#             DATA_TABLE = pd.read_csv(FILE_PATH)
-#
-#         elif list(FILE_TYPE.values())[1] == FILE_TYPE[file_type_name]:
-#             DATA_TABLE = pd.read_excel(FILE_PATH)
+def file_browse_for_table_callback(_, app_data):
+    global FILE_PATH, DATA_TABLE
+    # print("App Data: ", app_data["file_path_name"])
+    FILE_PATH = app_data["file_path_name"]
+
+    file_type_name = gui.get_value("cb_file_type_main_tab")
+
+    try:
+        if list(FILE_TYPE.values())[0] == FILE_TYPE[file_type_name]:
+            DATA_TABLE = pd.read_csv(FILE_PATH)
+
+        elif list(FILE_TYPE.values())[1] == FILE_TYPE[file_type_name]:
+            DATA_TABLE = pd.read_excel(FILE_PATH)
 
         # print(DATA_TABLE)
 
