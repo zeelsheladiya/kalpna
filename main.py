@@ -54,9 +54,9 @@ with gui.theme() as red_txt_color_theme:
 def file_browse_for_table_callback(_, app_data):
     global FILE_PATH, DATA_TABLE
     # print("App Data: ", app_data["file_path_name"])
-    FILE_PATH = app_data["file_path_name"]
+    # FILE_PATH = app_data["file_path_name"]
 
-    file_type_name = gui.get_value("cb_file_type_main_tab")
+    # file_type_name = gui.get_value("cb_file_type_main_tab")
 
     try:
         if list(FILE_TYPE.values())[0] == FILE_TYPE[file_type_name]:
