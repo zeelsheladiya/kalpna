@@ -1,4 +1,4 @@
-# import dearpygui.dearpygui as gui
+import dearpygui.dearpygui as gui
 
 # variable for node editor
 
@@ -40,13 +40,25 @@ def delink_callback(sender, app_data, gui):
 
 # node functions
 
+def print_me(sender):
+    print(f"Menu Item: {sender}")
+
 def init_node_menu(gui):
 
-    # TODO: need to solve this error to show combo box at node menu or choose different option
-    # gui.add_combo({"CSV": "csv", "Excel": "xlsx"},
-    #               default_value="DataFrame", width=400, tag="cb_node_type_node_tab",
-    #               parent="right_click_menu_node_menu")
-    pass
+    with gui.menu(label="Table"):
+        gui.add_checkbox(label="Pick Me", callback=print_me)
+        gui.add_button(label="Press Me", callback=print_me)
+        gui.add_color_picker(label="Color Me", callback=print_me)
+
+    with gui.menu(label="Filter"):
+        gui.add_checkbox(label="Pick Me", callback=print_me)
+        gui.add_button(label="Press Me", callback=print_me)
+        gui.add_color_picker(label="Color Me", callback=print_me)
+
+    with gui.menu(label="Data Science"):
+        gui.add_checkbox(label="Pick Me", callback=print_me)
+        gui.add_button(label="Press Me", callback=print_me)
+        gui.add_color_picker(label="Color Me", callback=print_me)
 
 # ============================================================================================
 # ============================================================================================
@@ -71,7 +83,7 @@ def node_render(gui, DATA_TABLE):
                                             user_data={"gui": gui})
 
             with gui.window(label="Right click node menu", modal=True, show=False, id="right_click_menu_node_menu",
-                            no_title_bar=True, tag="right_click_menu_node_menu"):
+                            no_title_bar=True, tag="right_click_menu_node_menu", width=150):
                 init_node_menu(gui=gui)
 
 
