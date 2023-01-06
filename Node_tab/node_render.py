@@ -1,4 +1,4 @@
-import dearpygui.dearpygui as gui
+# import dearpygui.dearpygui as gui
 
 # variable for node editor
 
