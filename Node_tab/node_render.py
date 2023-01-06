@@ -1,5 +1,8 @@
 # import dearpygui.dearpygui as gui
 
+from Node_tab.init_nodes import *
+
+
 # variable for node editor
 
 
@@ -38,35 +41,19 @@ def delink_callback(sender, app_data, gui):
 # ============================================================================================
 # ============================================================================================
 
-# node functions
-
-# test function
-def create_test_node(sender, app_data, gui):
-
-    # close menu window
-    gui.configure_item("right_click_menu_node_menu", show=False)
-
-    print(f"Menu Item: {sender}")
-
-    with gui.node(label="Node 1", parent="node_ground_node_tab"):
-        with gui.node_attribute(label="Node A1"):
-            gui.add_input_float(label="F1", width=150)
-
-        with gui.node_attribute(label="Node A2", attribute_type=gui.mvNode_Attr_Output):
-            gui.add_input_float(label="F2", width=150)
-
+# init node menu
 
 def init_node_menu(gui, DATA_TABLE):
-
     with gui.menu(label="Table"):
         for col in DATA_TABLE.columns:
-            gui.add_button(label=col, callback=create_test_node, user_data=gui)
+            gui.add_button(label=col, callback=table_column_node, user_data={"gui": gui, "col": col})
+
 
 # ============================================================================================
 # ============================================================================================
 
 # main node tab
-# this is just for development purpose
+# this comment is just for development purpose
 # def node_render():
 def node_render(gui, DATA_TABLE):
     gui.delete_item("node_tab")
@@ -76,7 +63,6 @@ def node_render(gui, DATA_TABLE):
         # node editor ground
         with gui.node_editor(tag="node_ground_node_tab", callback=link_callback, delink_callback=delink_callback,
                              user_data=gui, minimap=True, minimap_location=True, parent="node_tab"):
-
             # created right click registry
             with gui.handler_registry():
                 gui.add_mouse_click_handler(button=gui.mvMouseButton_Right, callback=right_click_node_menu_callback,
@@ -87,5 +73,3 @@ def node_render(gui, DATA_TABLE):
             with gui.window(label="Right click node menu", modal=True, show=False, id="right_click_menu_node_menu",
                             no_title_bar=True, tag="right_click_menu_node_menu", width=150):
                 init_node_menu(gui=gui, DATA_TABLE=DATA_TABLE)
-
-
