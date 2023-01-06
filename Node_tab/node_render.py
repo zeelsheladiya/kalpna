@@ -3,7 +3,7 @@ import dearpygui.dearpygui as gui
 # variable for node editor
 
 
-# node click events callbacks
+# node clicks events callbacks
 
 def right_click_node_menu_callback(sender, app_data, user_data):
     gui = user_data["gui"]
@@ -44,22 +44,11 @@ def delink_callback(sender, app_data, gui):
 def print_me(sender):
     print(f"Menu Item: {sender}")
 
-def init_node_menu(gui):
+def init_node_menu(gui, DATA_TABLE):
 
     with gui.menu(label="Table"):
-        gui.add_checkbox(label="Pick Me", callback=print_me)
-        gui.add_button(label="Press Me", callback=print_me)
-        gui.add_color_picker(label="Color Me", callback=print_me)
-
-    with gui.menu(label="Filter"):
-        gui.add_checkbox(label="Pick Me", callback=print_me)
-        gui.add_button(label="Press Me", callback=print_me)
-        gui.add_color_picker(label="Color Me", callback=print_me)
-
-    with gui.menu(label="Data Science"):
-        gui.add_checkbox(label="Pick Me", callback=print_me)
-        gui.add_button(label="Press Me", callback=print_me)
-        gui.add_color_picker(label="Color Me", callback=print_me)
+        for col in DATA_TABLE.columns:
+            gui.add_button(label=col, callback=print_me)
 
 # ============================================================================================
 # ============================================================================================
@@ -85,6 +74,6 @@ def node_render(gui, DATA_TABLE):
 
             with gui.window(label="Right click node menu", modal=True, show=False, id="right_click_menu_node_menu",
                             no_title_bar=True, tag="right_click_menu_node_menu", width=150):
-                init_node_menu(gui=gui)
+                init_node_menu(gui=gui, DATA_TABLE=DATA_TABLE)
 
 
