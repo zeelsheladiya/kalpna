@@ -1,6 +1,5 @@
 
-# TODO: make table sortable
-
+# TODO: make table sortable "this function is not completed need to fix and need to make ot workable"
 def sort_callback(sender, sort_specs, user_data):
     gui = user_data
     # sort_specs scenarios:

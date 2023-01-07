@@ -1,6 +1,7 @@
 # import dearpygui.dearpygui as gui
 
 
+# TODO: need to fix table view height into node and need to fix init position of node.
 # node functions
 def table_column_node(sender, app_data, user_data):
 
@@ -13,12 +14,22 @@ def table_column_node(sender, app_data, user_data):
 
     print(f"Menu Item: {sender}")
 
-    with gui.node(label="Node 1", parent="node_ground_node_tab"):
-        with gui.node_attribute(label="Node A1"):
-            gui.add_input_float(label="F1", width=150)
+    with gui.node(label=col_name, parent="node_ground_node_tab", tag=col_name):
 
         with gui.node_attribute(label="Node A2", attribute_type=gui.mvNode_Attr_Output):
-            gui.add_input_float(label="F2", width=150)
 
-    print(data_table[col_name])
+            # column table view
+            with gui.table(header_row=True, row_background=True,
+                           borders_innerH=True, borders_outerH=True, borders_innerV=True,
+                           borders_outerV=True, tag=col_name + "node_table_view", sortable=False,
+                           user_data=gui,
+                           resizable=True, policy=gui.mvTable_SizingStretchProp, width=100):
+
+                # header part (header_row is false that is why commented if it isn't then it is true)
+                gui.add_table_column(label=col_name)
+
+                for i in range(data_table[col_name].shape[0]):
+                    with gui.table_row():
+                        gui.add_text(f"{data_table[col_name][i]}")
+
 
