@@ -45,10 +45,15 @@ def delink_callback(sender, app_data, gui):
 # init node menu
 
 def init_node_menu(gui, DATA_TABLE):
-    with gui.menu(label="Table"):
+
+    # TODO: need to design and make node for all table data
+
+    # gui.add_menu_item(label="Table", callback= table view function , user_data={"gui": gui, "Data_table": DATA_TABLE})
+
+    with gui.menu(label="Table Columns"):
         for col in DATA_TABLE.columns:
-            gui.add_button(label=col, callback=table_column_node, user_data={"gui": gui, "Data_table": DATA_TABLE,
-                                                                             "col_name": col})
+            gui.add_menu_item(label=col, callback=table_column_node, user_data={"gui": gui, "Data_table": DATA_TABLE,
+                                                                                "col_name": col})
 
 
 # ============================================================================================
