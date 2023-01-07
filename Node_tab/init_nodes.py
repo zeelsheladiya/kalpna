@@ -5,6 +5,8 @@
 def table_column_node(sender, app_data, user_data):
 
     gui = user_data["gui"]
+    data_table = user_data["Data_table"]
+    col_name = user_data["col_name"]
 
     # close a menu window
     gui.configure_item("right_click_menu_node_menu", show=False)
@@ -17,3 +19,6 @@ def table_column_node(sender, app_data, user_data):
 
         with gui.node_attribute(label="Node A2", attribute_type=gui.mvNode_Attr_Output):
             gui.add_input_float(label="F2", width=150)
+
+    print(data_table[col_name])
+

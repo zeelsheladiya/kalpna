@@ -26,6 +26,7 @@ def left_click_node_menu_callback(sender, app_data, user_data):
             gui.configure_item("right_click_menu_node_menu", show=False)
 
 
+# TODO: need to check functionality of this link function
 # callback runs when user attempts to connect attributes
 def link_callback(sender, app_data, gui):
     # app_data -> (link_id1, link_id2)
@@ -46,7 +47,8 @@ def delink_callback(sender, app_data, gui):
 def init_node_menu(gui, DATA_TABLE):
     with gui.menu(label="Table"):
         for col in DATA_TABLE.columns:
-            gui.add_button(label=col, callback=table_column_node, user_data={"gui": gui, "col": col})
+            gui.add_button(label=col, callback=table_column_node, user_data={"gui": gui, "Data_table": DATA_TABLE,
+                                                                             "col_name": col})
 
 
 # ============================================================================================
