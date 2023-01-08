@@ -1,7 +1,7 @@
 # import dearpygui.dearpygui as gui
 
 
-# TODO: need to fix table view height into node and need to fix init position of node.
+# TODO: need to fix table view height into node.
 # node functions
 def table_column_node(sender, app_data, user_data):
 
