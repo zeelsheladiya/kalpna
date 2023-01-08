@@ -52,8 +52,9 @@ def init_node_menu(gui, DATA_TABLE):
 
     with gui.menu(label="Table Columns"):
         for col in DATA_TABLE.columns:
-            gui.add_menu_item(label=col, callback=table_column_node, user_data={"gui": gui, "Data_table": DATA_TABLE,
-                                                                                "col_name": col})
+            gui.add_menu_item(label=col, tag=col, callback=table_column_node, user_data={"gui": gui,
+                                                                                         "Data_table": DATA_TABLE,
+                                                                                         "col_name": col})
 
 
 # ============================================================================================
