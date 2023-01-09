@@ -3,6 +3,7 @@
 # global variable for node
 # NODE_COUNTER = 0
 
+# TODO: need to fix table view height into node and also need to solve node spawn problem.
 #       Help could be node counter
 # node functions
 def table_column_node(sender, app_data, user_data):
