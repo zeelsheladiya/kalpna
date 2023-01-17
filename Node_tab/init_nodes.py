@@ -13,9 +13,9 @@ def table_column_node(sender, app_data, user_data):
     col_name = user_data["col_name"]
 
     # close a menu window
-    gui.configure_item("right_click_menu_node_menu", show=False)
+    # gui.configure_item("right_click_menu_node_menu", show=False)
 
-    print(f"Menu Item: {sender}")
+    # print(f"Menu Item: {sender}")
 
     with gui.node(label=col_name, parent="node_ground_node_tab", tag=col_name+"_node"):
 
