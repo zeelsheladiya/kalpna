@@ -1,6 +1,7 @@
 # popups =================================================================================================
 
-def basic_popup(gui=None, parent_window_name: str = "primary_window", title: str = "", message: str = "", button_name: str = "OK", error: str = "Not defined"):
+def basic_popup(gui=None, parent_window_name: str = "primary_window", title: str = "",
+                message: str = "", button_name: str = "OK", error: str = "Not defined"):
 
     try:
         main_width = gui.get_item_width(parent_window_name)
@@ -12,10 +13,11 @@ def basic_popup(gui=None, parent_window_name: str = "primary_window", title: str
             gui.add_separator()
             # gui.add_checkbox(label="Don't ask me next time")
             with gui.group(horizontal=True):
-                gui.add_button(label=button_name, width=150, callback=lambda: gui.configure_item("modal_id", show=False))
+                gui.add_button(label=button_name, width=150,
+                               callback=lambda: gui.configure_item("modal_id", show=False))
 
         gui.set_item_pos("modal_id", (int(main_width / 3), int(0.4 * main_height)))
 
     except Exception as e:
-        # need to something but not that important
+        # need it to something but not that important
         pass
