@@ -7,6 +7,8 @@ from Msg_Str.msg_str import *
 # NODE_COUNTER = 0
 
 
+# node functions =======================================================================
+
 # support functions =======================================================================
 
 def duplicate_node_else_func(gui, parent_window_name: str = "primary_window",
@@ -55,7 +57,7 @@ def table_node(sender, app_data, user_data):
                     # table view
                     with gui.table(tag="table_node_view", sortable=True, user_data=gui,
                                    resizable=True, policy=gui.mvTable_SizingFixedFit, scrollY=True, scrollX=True,
-                                   width=150, height=200):
+                                   width=250, height=200):
 
                         # header part
 
