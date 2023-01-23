@@ -14,7 +14,6 @@ from Msg_Str.msg_str import *
 def duplicate_node_else_func(gui, parent_window_name: str = "primary_window",
                              title: str = "unknown",
                              message: str = "duplicate column node error", button_name: str = "Close PopUp"):
-
     # TODO: need to pop up message for duplicate column or put item in focus instead
 
     # close a menu window
@@ -25,14 +24,14 @@ def duplicate_node_else_func(gui, parent_window_name: str = "primary_window",
 
 
 def node_exception_pop_up_msg_func(gui, parent_window_name: str = "primary_window",
-                             title: str = "unknown",
-                             message: str = "duplicate column node error", button_name: str = "Close PopUp"):
-
+                                   title: str = "unknown",
+                                   message: str = "duplicate column node error", button_name: str = "Close PopUp"):
     # TODO: not accurate error need to be fixed
     # basic_popup(gui=gui, parent_window_name="node_ground_node_tab", title=duplicate_column_node_error_title,
     #             message=duplicate_column_node_error, button_name="Close PopUp", error=str(error))
 
     pass
+
 
 # node functions ===========================================================================
 
@@ -53,7 +52,7 @@ def table_node(sender, app_data, user_data):
             with gui.node(label="Main Table", parent="node_ground_node_tab", tag="table_node"):
 
                 with gui.node_attribute(label="table_output_node", attribute_type=gui.mvNode_Attr_Output,
-                                        tag="table_output_node"):
+                                        tag="table_output_node", user_data={"gui": gui, "Data_table": data_table}):
                     # table view
                     with gui.table(tag="table_node_view", sortable=True, user_data=gui,
                                    resizable=True, policy=gui.mvTable_SizingFixedFit, scrollY=True, scrollX=True,
@@ -101,7 +100,10 @@ def table_column_node(sender, app_data, user_data):
             with gui.node(label=col_name, parent="node_ground_node_tab", tag=col_name + "_node"):
 
                 with gui.node_attribute(label=col_name + "output_node", attribute_type=gui.mvNode_Attr_Output,
-                                        tag=col_name + "output_node"):
+                                        tag=col_name + "output_node", user_data={"gui": gui,
+                                                                                 "Data_table": data_table,
+                                                                                 "col_name": col_name}):
+
                     # column table view
                     with gui.table(tag=col_name + "_node_table_view",
                                    user_data=gui, policy=gui.mvTable_SizingFixedSame,
