@@ -55,8 +55,10 @@ def init_node_menu(gui, DATA_TABLE):
             gui.add_menu_item(label=col, tag=col, callback=table_column_node, user_data={"gui": gui,
                                                                                          "Data_table": DATA_TABLE,
                                                                                          "col_name": col})
+    # graph plotting node
+    with gui.menu(label="Graph Plotting"):
+        gui.add_menu_item(label="Basic plot", callback=basic_plot_node, user_data={"gui": gui})
 
-    
 
 
 # ============================================================================================

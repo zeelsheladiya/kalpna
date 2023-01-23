@@ -52,8 +52,8 @@ def table_node(sender, app_data, user_data):
 
             with gui.node(label="Main Table", parent="node_ground_node_tab", tag="table_node"):
 
-                with gui.node_attribute(label="Node A2", attribute_type=gui.mvNode_Attr_Output,
-                                        tag="table_node_attribute"):
+                with gui.node_attribute(label="table_output_node", attribute_type=gui.mvNode_Attr_Output,
+                                        tag="table_output_node"):
                     # table view
                     with gui.table(tag="table_node_view", sortable=True, user_data=gui,
                                    resizable=True, policy=gui.mvTable_SizingFixedFit, scrollY=True, scrollX=True,
@@ -100,8 +100,8 @@ def table_column_node(sender, app_data, user_data):
 
             with gui.node(label=col_name, parent="node_ground_node_tab", tag=col_name + "_node"):
 
-                with gui.node_attribute(label="Node A2", attribute_type=gui.mvNode_Attr_Output,
-                                        tag=col_name + "_node_attribute"):
+                with gui.node_attribute(label=col_name + "output_node", attribute_type=gui.mvNode_Attr_Output,
+                                        tag=col_name + "output_node"):
                     # column table view
                     with gui.table(tag=col_name + "_node_table_view",
                                    user_data=gui, policy=gui.mvTable_SizingFixedSame,
@@ -115,6 +115,36 @@ def table_column_node(sender, app_data, user_data):
 
             # To set node position on the mouse position
             gui.set_item_pos(col_name + "_node", gui.get_mouse_pos(local=False))
+
+        else:
+
+            duplicate_node_else_func(gui=gui)
+
+    except Exception as error:
+
+        node_exception_pop_up_msg_func(gui=gui)
+
+
+# TODO: complete basic plot node and also complete the link and delink
+def basic_plot_node(sender, app_data, user_data):
+    try:
+        gui = user_data["gui"]
+
+        if not gui.does_item_exist("basic_plot_node"):
+
+            # close a menu window
+            gui.configure_item("right_click_menu_node_menu", show=False)
+
+            print(f"Menu Item: {sender}")
+
+            with gui.node(label="Basic plot node", parent="node_ground_node_tab", tag="basic_plot_node"):
+
+                with gui.node_attribute(label="Node A2", attribute_type=gui.mvNode_Attr_Input,
+                                        tag="basic_plot_x_input_node"):
+                    pass
+
+            # To set node position on the mouse position
+            gui.set_item_pos("basic_plot_node", gui.get_mouse_pos(local=False))
 
         else:
 
