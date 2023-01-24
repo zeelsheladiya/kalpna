@@ -30,9 +30,9 @@ def left_click_node_menu_callback(sender, app_data, user_data):
 # callback runs when user attempts to connect attributes
 def link_callback(sender, app_data, user_data):
     gui = user_data["gui"]
-    data_table = user_data["Data_table"]
     # app_data -> (link_id1, link_id2)
     gui.add_node_link(app_data[0], app_data[1], parent=sender)
+    print(app_data[0], app_data[1])
 
 
 # callback runs when user attempts to disconnect attributes
@@ -77,8 +77,7 @@ def node_render(gui, DATA_TABLE):
     with gui.tab(label="node tab", tag="node_tab", parent="main_tab_bar"):
         # node editor ground
         with gui.node_editor(tag="node_ground_node_tab", callback=link_callback, delink_callback=delink_callback,
-                             user_data={"gui": gui, "Data_table": DATA_TABLE},
-                             minimap=True, minimap_location=True, parent="node_tab"):
+                             user_data={"gui": gui}, minimap=True, minimap_location=True, parent="node_tab"):
 
             # created right click registry
             with gui.handler_registry():
