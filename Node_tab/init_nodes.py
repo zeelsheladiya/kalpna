@@ -99,10 +99,10 @@ def table_column_node(sender, app_data, user_data):
 
             with gui.node(label=col_name, parent="node_ground_node_tab", tag=col_name + "_node"):
 
-                with gui.node_attribute(label=col_name + "output_node", attribute_type=gui.mvNode_Attr_Output,
-                                        tag=col_name + "output_node", user_data={"gui": gui,
-                                                                                 "Data_table": data_table,
-                                                                                 "col_name": col_name}):
+                with gui.node_attribute(label=col_name + "_output_node", attribute_type=gui.mvNode_Attr_Output,
+                                        tag=col_name + "_output_node", user_data={"gui": gui,
+                                                                                  "Data_table": data_table,
+                                                                                  "col_name": col_name}):
 
                     # column table view
                     with gui.table(tag=col_name + "_node_table_view",
