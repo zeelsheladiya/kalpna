@@ -107,7 +107,7 @@ def table_column_node(sender, app_data, user_data):
                     # column table view
                     with gui.table(tag=col_name + "_node_table_view",
                                    user_data=gui, policy=gui.mvTable_SizingFixedSame,
-                                   scrollY=True, width=150, height=200):
+                                   scrollY=True, scrollX=True, width=150, height=200):
                         # header part (header_row is false that is why commented if it isn't then it is true)
                         gui.add_table_column(label=col_name)
 
@@ -141,7 +141,7 @@ def basic_plot_node(sender, app_data, user_data):
 
             with gui.node(label="Basic plot node", parent="node_ground_node_tab", tag="basic_plot_node"):
 
-                with gui.node_attribute(label="Node A2", attribute_type=gui.mvNode_Attr_Input,
+                with gui.node_attribute(label="X Axis", attribute_type=gui.mvNode_Attr_Input,
                                         tag="basic_plot_x_input_node"):
                     pass
 
