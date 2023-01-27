@@ -20,7 +20,7 @@ def right_click_node_menu_callback(sender, app_data, user_data):
 def left_click_node_menu_callback(sender, app_data, user_data):
     gui = user_data["gui"]
 
-    # get active tab based on it position
+    get active tab based on it position
     if gui.get_item_state("node_tab")["pos"] == [8, 31]:
         if gui.get_item_state(gui.get_active_window())["hovered"] is not True:
             gui.configure_item("right_click_menu_node_menu", show=False)
