@@ -1,4 +1,4 @@
-
+put strings
 # main tab msg strings
 
 error_msg_title: str = "Error"
