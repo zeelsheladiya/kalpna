@@ -10,7 +10,7 @@ from Node_tab.node_render import *
 
 # global variable ============================================================================
 
-# FILE_PATH: str
+FILE_PATH: str
 
 FILE_TYPE = {
     "CSV": "csv",
