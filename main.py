@@ -8,7 +8,7 @@ from Msg_Str.msg_str import *
 from Main_tab.table_rander import *
 from Node_tab.node_render import *
 
-# global variable ============== =============================================================
+# global variable ============================================================================
 
 FILE_PATH: str
 
