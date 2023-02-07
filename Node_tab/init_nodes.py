@@ -104,16 +104,16 @@ def table_column_node(sender, app_data, user_data):
                                                                                   "Data_table": data_table,
                                                                                   "col_name": col_name}):
 
-                    # column table view
-                    with gui.table(tag=col_name + "_node_table_view",
-                                   user_data=gui, policy=gui.mvTable_SizingFixedSame,
-                                   scrollY=True, scrollX=True, width=150, height=200):
-                        # header part (header_row is false that is why commented if it isn't then it is true)
-                        gui.add_table_column(label=col_name)
-
-                        for i in range(data_table[col_name].shape[0]):
-                            with gui.table_row():
-                                gui.add_text(f"{data_table[col_name][i]}")
+                    # # column table view
+                    # with gui.table(tag=col_name + "_node_table_view",
+                    #                user_data=gui, policy=gui.mvTable_SizingFixedSame,
+                    #                scrollY=True, scrollX=True, width=150, height=200):
+                    #     # header part (header_row is false that is why commented if it isn't then it is true)
+                    #     gui.add_table_column(label=col_name)
+                    #
+                    #     for i in range(data_table[col_name].shape[0]):
+                    #         with gui.table_row():
+                    #             gui.add_text(f"{data_table[col_name][i]}")
 
             # To set node position on the mouse position
             gui.set_item_pos(col_name + "_node", gui.get_mouse_pos(local=False))
