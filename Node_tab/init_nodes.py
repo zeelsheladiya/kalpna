@@ -90,7 +90,7 @@ def table_column_node(sender, app_data, user_data):
         data_table = user_data["Data_table"]
         col_name = user_data["col_name"]
 
-        if not gui.does_item_exist(col_name + "_node"):
+        # if not gui.does_item_exist(col_name + "_node"):
 
             # close a menu window
             gui.configure_item("right_click_menu_node_menu", show=False)
