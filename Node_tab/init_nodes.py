@@ -103,7 +103,6 @@ def table_column_node(sender, app_data, user_data):
                                         tag=col_name + "_output_node", user_data={"gui": gui,
                                                                                   "Data_table": data_table,
                                                                                   "col_name": col_name}):
-
                     # column table view
                     with gui.table(tag=col_name + "_node_table_view",
                                    user_data=gui, policy=gui.mvTable_SizingFixedSame,
@@ -139,7 +138,6 @@ def basic_plot_node(sender, app_data, user_data):
 
             print(f"Menu Item: {sender}")
 
-
             with gui.node(label="Basic plot node", parent="node_ground_node_tab", tag="basic_plot_node"):
 
                 # X axis
@@ -151,6 +149,10 @@ def basic_plot_node(sender, app_data, user_data):
                 with gui.node_attribute(label="Y Axis", attribute_type=gui.mvNode_Attr_Input,
                                         tag="basic_plot_y_input_node"):
                     pass
+
+                # plot
+                with gui.plot(label="Annotations", height=300, width=300):
+                    gui.add_plot_legend()
 
             # To set node position on the mouse position
             gui.set_item_pos("basic_plot_node", gui.get_mouse_pos(local=False))
