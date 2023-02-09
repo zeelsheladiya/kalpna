@@ -139,10 +139,18 @@ def basic_plot_node(sender, app_data, user_data):
 
             print(f"Menu Item: {sender}")
 
+            # X axis
             with gui.node(label="Basic plot node", parent="node_ground_node_tab", tag="basic_plot_node"):
 
                 with gui.node_attribute(label="X Axis", attribute_type=gui.mvNode_Attr_Input,
                                         tag="basic_plot_x_input_node"):
+                    pass
+
+            # Y axis
+            with gui.node(label="Basic plot node", parent="node_ground_node_tab", tag="basic_plot_node"):
+
+                with gui.node_attribute(label="Y Axis", attribute_type=gui.mvNode_Attr_Input,
+                                        tag="basic_plot_y_input_node"):
                     pass
 
             # To set node position on the mouse position
