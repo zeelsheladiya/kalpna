@@ -143,16 +143,25 @@ def basic_plot_node(sender, app_data, user_data):
                 # X axis
                 with gui.node_attribute(label="X Axis", attribute_type=gui.mvNode_Attr_Input,
                                         tag="basic_plot_x_input_node"):
-                    pass
+                    # need to complete a data gathering process
+                    print("1 step")
 
                 # Y axis
                 with gui.node_attribute(label="Y Axis", attribute_type=gui.mvNode_Attr_Input,
                                         tag="basic_plot_y_input_node"):
-                    pass
+                    # need to complete a data gathering process
+                    print("2 step")
 
-                # plot
-                with gui.plot(label="Annotations", height=300, width=300):
-                    gui.add_plot_legend()
+                with gui.node_attribute(label="Y Axis", attribute_type=gui.mvNode_Attr_Input,
+                                        tag="basic_plot_y_input_node"):
+
+                    with gui.plot(label="Line Series", height=400, width=400):
+                        # optionally create legend
+                        gui.add_plot_legend()
+
+                        # REQUIRED: create x and y axes
+                        gui.add_plot_axis(gui.mvXAxis, label="x")
+                        gui.add_plot_axis(gui.mvYAxis, label="y", tag="y_axis")
 
             # To set node position on the mouse position
             gui.set_item_pos("basic_plot_node", gui.get_mouse_pos(local=False))
