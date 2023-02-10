@@ -126,7 +126,7 @@ def table_column_node(sender, app_data, user_data):
         node_exception_pop_up_msg_func(gui=gui)
 
 
-# TODO: complete basic plot node and also complete the link and delink
+# TODO: complete basic plot with customizable label and legend
 def basic_plot_node(sender, app_data, user_data):
     try:
         gui = user_data["gui"]
@@ -143,14 +143,14 @@ def basic_plot_node(sender, app_data, user_data):
                 # X axis
                 with gui.node_attribute(label="X Axis", attribute_type=gui.mvNode_Attr_Input,
                                         tag="basic_plot_x_input_node"):
-                    pass
+                    gui.add_text("X Axis")
 
                 # Y axis
                 with gui.node_attribute(label="Y Axis", attribute_type=gui.mvNode_Attr_Input,
                                         tag="basic_plot_y_input_node"):
-                    pass
+                    gui.add_text("Y Axis")
 
-                with gui.node_attribute(label="basic plot", attribute_type=gui.mvNode_Attr_Input,
+                with gui.node_attribute(label="basic plot", attribute_type=gui.mvNode_Attr_Static,
                                         tag="basic_plot_node_plot"):
 
                     with gui.plot(label="Line Series", height=400, width=400):
@@ -158,8 +158,8 @@ def basic_plot_node(sender, app_data, user_data):
                         gui.add_plot_legend()
 
                         # REQUIRED: create x and y axes
-                        gui.add_plot_axis(gui.mvXAxis, label="x", tag="x_axis")
-                        gui.add_plot_axis(gui.mvYAxis, label="y", tag="y_axis")
+                        gui.add_plot_axis(gui.mvXAxis, label="X Axis", tag="basic_plot_node_x_axis")
+                        gui.add_plot_axis(gui.mvYAxis, label="Y Axis", tag="basic_plot_node_y_axis")
 
             # To set node position on the mouse position
             gui.set_item_pos("basic_plot_node", gui.get_mouse_pos(local=False))
