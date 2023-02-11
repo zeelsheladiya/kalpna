@@ -2,8 +2,24 @@
 
 from Node_tab.init_nodes import *
 
-
 # variable for node editor
+
+# To check which node attribute is connected
+node_connection = {
+    "Basic plot node": {
+        "x_axis": 0,
+        "y_axis": 0
+    }
+}
+
+
+# To get and set the column data for nodes
+node_attribute_data = {
+    "Basic plot node": {
+        "x_axis": [],
+        "y_axis": []
+    }
+}
 
 
 # node clicks events callbacks
@@ -30,9 +46,27 @@ def left_click_node_menu_callback(sender, app_data, user_data):
 # callback runs when user attempts to connect attributes
 def link_callback(sender, app_data, user_data):
     gui = user_data["gui"]
-    # app_data -> (link_id1, link_id2)
+    data_table = user_data["Data_table"]
+    print(sender)
     gui.add_node_link(app_data[0], app_data[1], parent=sender)
     print(app_data[0], app_data[1])
+    print(gui.get_item_parent(app_data[1]))
+    print(gui.get_item_user_data(app_data[0])["col_name"])
+
+    # for the basic plot node ========================
+    if gui.get_item_parent(app_data[1]) == "basic_plot_node":
+
+        if app_data[1] == "basic_plot_x_input_node":
+            node_connection["Basic plot node"]["x_axis"] = 1
+            node_attribute_data["Basic plot node"]["x_axis"] = data_table[gui.get_item_user_data(app_data[0])["col_name"]]
+
+        if app_data[1] == "basic_plot_y_input_node":
+            node_connection["Basic plot node"]["y_axis"] = 1
+            node_attribute_data["Basic plot node"]["y_axis"] = data_table[gui.get_item_user_data(app_data[0])["col_name"]]
+
+        if node_connection["Basic plot node"]["x_axis"] == 1 and node_connection["Basic plot node"]["y_axis"] == 1:
+            gui.set_value('basic_plot_node_plot_line', [list(node_attribute_data["Basic plot node"]["x_axis"]),
+                                                        list(node_attribute_data["Basic plot node"]["y_axis"])])
 
 
 # callback runs when user attempts to disconnect attributes
@@ -48,7 +82,6 @@ def delink_callback(sender, app_data, user_data):
 # init node menu
 
 def init_node_menu(gui, DATA_TABLE):
-
     # main table node
     gui.add_menu_item(label="Table", callback=table_node, user_data={"gui": gui, "Data_table": DATA_TABLE})
 
@@ -61,7 +94,6 @@ def init_node_menu(gui, DATA_TABLE):
     # graph plotting node
     with gui.menu(label="Graph Plotting"):
         gui.add_menu_item(label="Basic plot", callback=basic_plot_node, user_data={"gui": gui})
-
 
 
 # ============================================================================================
@@ -77,8 +109,8 @@ def node_render(gui, DATA_TABLE):
     with gui.tab(label="node tab", tag="node_tab", parent="main_tab_bar"):
         # node editor ground
         with gui.node_editor(tag="node_ground_node_tab", callback=link_callback, delink_callback=delink_callback,
-                             user_data={"gui": gui}, minimap=True, minimap_location=True, parent="node_tab"):
-
+                             user_data={"gui": gui, "Data_table": DATA_TABLE},
+                             minimap=True, minimap_location=True, parent="node_tab"):
             # created right click registry
             with gui.handler_registry():
                 gui.add_mouse_click_handler(button=gui.mvMouseButton_Right, callback=right_click_node_menu_callback,

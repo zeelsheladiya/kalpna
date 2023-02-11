@@ -153,13 +153,16 @@ def basic_plot_node(sender, app_data, user_data):
                 with gui.node_attribute(label="basic plot", attribute_type=gui.mvNode_Attr_Static,
                                         tag="basic_plot_node_plot"):
 
-                    with gui.plot(label="Line Series", height=400, width=400):
+                    with gui.plot(label="basic plot", height=400, width=400):
                         # optionally create legend
                         gui.add_plot_legend()
 
                         # REQUIRED: create x and y axes
                         gui.add_plot_axis(gui.mvXAxis, label="X Axis", tag="basic_plot_node_x_axis")
                         gui.add_plot_axis(gui.mvYAxis, label="Y Axis", tag="basic_plot_node_y_axis")
+
+                        gui.add_line_series([], [], label="", parent="basic_plot_node_y_axis",
+                                            tag="basic_plot_node_plot_line")
 
             # To set node position on the mouse position
             gui.set_item_pos("basic_plot_node", gui.get_mouse_pos(local=False))
