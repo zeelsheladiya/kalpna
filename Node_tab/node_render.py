@@ -47,11 +47,11 @@ def left_click_node_menu_callback(sender, app_data, user_data):
 def link_callback(sender, app_data, user_data):
     gui = user_data["gui"]
     data_table = user_data["Data_table"]
-    print(sender)
+    # print(sender)
     gui.add_node_link(app_data[0], app_data[1], parent=sender)
-    print(app_data[0], app_data[1])
-    print(gui.get_item_parent(app_data[1]))
-    print(gui.get_item_user_data(app_data[0])["col_name"])
+    # print(app_data[0], app_data[1])
+    # print(gui.get_item_parent(app_data[1]))
+    # print(gui.get_item_user_data(app_data[0])["col_name"])
 
     # for the basic plot node ========================
     if gui.get_item_parent(app_data[1]) == "basic_plot_node":

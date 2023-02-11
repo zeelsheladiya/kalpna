@@ -161,7 +161,7 @@ def basic_plot_node(sender, app_data, user_data):
                         gui.add_plot_axis(gui.mvXAxis, label="X Axis", tag="basic_plot_node_x_axis")
                         gui.add_plot_axis(gui.mvYAxis, label="Y Axis", tag="basic_plot_node_y_axis")
 
-                        gui.add_line_series([], [], label="", parent="basic_plot_node_y_axis",
+                        gui.add_line_series([], [], label="test", parent="basic_plot_node_y_axis",
                                             tag="basic_plot_node_plot_line")
 
             # To set node position on the mouse position
