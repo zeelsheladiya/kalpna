@@ -54,6 +54,7 @@ def link_callback(sender, app_data, user_data):
     # print(gui.get_item_user_data(app_data[0])["col_name"])
 
     # for the basic plot node ========================
+    # TODO: make focus on x and y range in plot
     if gui.get_item_parent(app_data[1]) == "basic_plot_node":
 
         if app_data[1] == "basic_plot_x_input_node":
