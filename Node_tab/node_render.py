@@ -65,8 +65,8 @@ def link_callback(sender, app_data, user_data):
             node_connection["Basic plot node"]["y_axis"] = 1
             node_attribute_data["Basic plot node"]["y_axis"] = data_table[gui.get_item_user_data(app_data[0])["col_name"]]
 
-        if node_connection["Basic plot node"]["x_axis"] == 1 and node_connection["Basic plot node"]["y_axis"] == 1:
-            gui.set_value('basic_plot_node_plot_line', [list(node_attribute_data["Basic plot node"]["x_axis"]),
+        # if node_connection["Basic plot node"]["x_axis"] == 1 and node_connection["Basic plot node"]["y_axis"] == 1:
+        #     gui.set_value('basic_plot_node_plot_line', [list(node_attribute_data["Basic plot node"]["x_axis"]),
                                                         list(node_attribute_data["Basic plot node"]["y_axis"])])
 
 
