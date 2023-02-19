@@ -7,6 +7,13 @@ from Msg_Str.msg_str import *
 # NODE_COUNTER = 0
 
 
+PLOT_TYPE_LIST = {
+    "line_plot": "Line Plot",
+    "bar_plot": "Bar Plot",
+    "scatter_plot": "Scatter Plot"
+}
+
+
 # node functions =======================================================================
 
 # support functions =======================================================================
@@ -150,10 +157,17 @@ def basic_plot_node(sender, app_data, user_data):
                                         tag="basic_plot_y_input_node"):
                     gui.add_text("Y Axis")
 
+                with gui.node_attribute(label="plot Selection", attribute_type=gui.mvNode_Attr_Static,
+                                        tag="basic_plot_node_plot_type_combo"):
+                    # combo box for the type of plot
+                    gui.add_combo(list(PLOT_TYPE_LIST.values()), default_value="Line Plot", width=100,
+                                  tag="basic_plot_node_plot_type", label="Select Plot Type",
+                                  parent="basic_plot_node_plot_type_combo")
+
                 with gui.node_attribute(label="basic plot", attribute_type=gui.mvNode_Attr_Static,
                                         tag="basic_plot_node_plot"):
-
                     with gui.plot(label="basic plot", height=400, width=400):
+
                         # optionally create legend
                         gui.add_plot_legend()
 
@@ -161,11 +175,11 @@ def basic_plot_node(sender, app_data, user_data):
                         gui.add_plot_axis(gui.mvXAxis, label="X Axis", tag="basic_plot_node_x_axis")
                         gui.add_plot_axis(gui.mvYAxis, label="Y Axis", tag="basic_plot_node_y_axis")
 
-                        gui.add_line_series([], [], label="line", parent="basic_plot_node_y_axis",
+                        # draw plot default one is line
+                        gui.add_line_series([], [], label="X * Y", parent="basic_plot_node_y_axis",
                                             tag="basic_plot_node_plot_draw")
                         gui.add_button(label="Delete Series 1", parent=gui.last_item(),
                                        callback=lambda: gui.delete_item("basic_plot_node_plot_draw"))
-
 
             # To set node position on the mouse position
             gui.set_item_pos("basic_plot_node", gui.get_mouse_pos(local=False))
