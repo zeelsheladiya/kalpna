@@ -22,6 +22,20 @@ node_attribute_data = {
 }
 
 
+# helper functions =======================================
+
+def basic_plot_node_plot_select_type(gui):
+
+    if node_connection["Basic plot node"]["x_axis"] == 1 and node_connection["Basic plot node"]["y_axis"] == 1:
+
+        if gui.get_value("basic_plot_node_plot_type") == "Line Plot":
+
+            gui.set_value('basic_plot_node_plot_draw', [list(node_attribute_data["Basic plot node"]["x_axis"]),
+                                                        list(node_attribute_data["Basic plot node"]["y_axis"])])
+
+
+# =========================================================
+
 # node clicks events callbacks
 
 def right_click_node_menu_callback(sender, app_data, user_data):
@@ -65,9 +79,7 @@ def link_callback(sender, app_data, user_data):
             node_connection["Basic plot node"]["y_axis"] = 1
             node_attribute_data["Basic plot node"]["y_axis"] = data_table[gui.get_item_user_data(app_data[0])["col_name"]]
 
-        if node_connection["Basic plot node"]["x_axis"] == 1 and node_connection["Basic plot node"]["y_axis"] == 1:
-            gui.set_value('basic_plot_node_plot_draw', [list(node_attribute_data["Basic plot node"]["x_axis"]),
-                                                        list(node_attribute_data["Basic plot node"]["y_axis"])])
+        basic_plot_node_plot_select_type(gui=gui)
 
 
 # callback runs when user attempts to disconnect attributes

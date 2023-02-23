@@ -1,4 +1,4 @@
-import dearpygui.dearpygui as gui
+# import dearpygui.dearpygui as gui
 from Popups.Popups import *
 from Msg_Str.msg_str import *
 
@@ -136,7 +136,7 @@ def table_column_node(sender, app_data, user_data):
 # TODO: complete basic plot with customizable label and legend
 def basic_plot_node(sender, app_data, user_data):
     try:
-        # gui = user_data["gui"]
+        gui = user_data["gui"]
 
         if not gui.does_item_exist("basic_plot_node"):
 
