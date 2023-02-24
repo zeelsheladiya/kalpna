@@ -26,12 +26,12 @@ node_attribute_data = {
 
 def basic_plot_node_plot_select_type(gui):
 
-    # if node_connection["Basic plot node"]["x_axis"] == 1 and node_connection["Basic plot node"]["y_axis"] == 1:
-    #
-    #     if gui.get_value("basic_plot_node_plot_type") == "Line Plot":
-    #
-    #         gui.set_value('basic_plot_node_plot_draw', [list(node_attribute_data["Basic plot node"]["x_axis"]),
-    #                                                     list(node_attribute_data["Basic plot node"]["y_axis"])])
+    if node_connection["Basic plot node"]["x_axis"] == 1 and node_connection["Basic plot node"]["y_axis"] == 1:
+
+        if gui.get_value("basic_plot_node_plot_type") == "Line Plot":
+
+            gui.set_value('basic_plot_node_plot_draw', [list(node_attribute_data["Basic plot node"]["x_axis"]),
+                                                        list(node_attribute_data["Basic plot node"]["y_axis"])])
 
 
 # =========================================================
