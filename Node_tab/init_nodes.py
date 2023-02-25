@@ -175,11 +175,17 @@ def basic_plot_node(sender, app_data, user_data):
                         gui.add_plot_axis(gui.mvXAxis, label="X Axis", tag="basic_plot_node_x_axis")
                         gui.add_plot_axis(gui.mvYAxis, label="Y Axis", tag="basic_plot_node_y_axis")
 
-                        # draw plot default one is line
+                        # draw plot default one the line plot
                         gui.add_line_series([], [], label="X * Y", parent="basic_plot_node_y_axis",
-                                            tag="basic_plot_node_plot_draw")
-                        gui.add_button(label="Delete Series 1", parent=gui.last_item(),
-                                       callback=lambda: gui.delete_item("basic_plot_node_plot_draw"))
+                                            tag="basic_plot_node_line_plot_draw")
+
+                        # draw scatter plot
+                        gui.add_scatter_series([], [], label="X * Y", parent="basic_plot_node_y_axis",
+                                               tag="basic_plot_node_scatter_plot_draw")
+
+                        # draw bar plot
+                        gui.add_bar_series([], [], label="X * Y", parent="basic_plot_node_y_axis",
+                                           tag="basic_plot_node_bar_plot_draw")
 
             # To set node position on the mouse position
             gui.set_item_pos("basic_plot_node", gui.get_mouse_pos(local=False))
