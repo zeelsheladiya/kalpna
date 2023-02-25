@@ -175,6 +175,7 @@ def basic_plot_node(sender, app_data, user_data):
                         gui.add_plot_axis(gui.mvXAxis, label="X Axis", tag="basic_plot_node_x_axis")
                         gui.add_plot_axis(gui.mvYAxis, label="Y Axis", tag="basic_plot_node_y_axis")
 
+                        # TODO: need to put more plots options
                         # draw plot default one the line plot
                         gui.add_line_series([], [], label="X * Y", parent="basic_plot_node_y_axis",
                                             tag="basic_plot_node_line_plot_draw")
