@@ -1,4 +1,4 @@
-# import dearpygui.dearpygui as gui
+import dearpygui.dearpygui as gui
 from Popups.Popups import *
 from Msg_Str.msg_str import *
 
@@ -136,19 +136,19 @@ def table_column_node(sender, app_data, user_data):
 # TODO: complete basic plot with customizable label and legend
 def basic_plot_node(sender, app_data, user_data):
     try:
-        gui = user_data["gui"]
+        # gui = user_data["gui"]
 
-        if not gui.does_item_exist("basic_plot_node"):
-
-            # close a menu window
-            gui.configure_item("right_click_menu_node_menu", show=False)
-
-            print(f"Menu Item: {sender}")
-
-            with gui.node(label="Basic plot node", parent="node_ground_node_tab", tag="basic_plot_node"):
-
-                # X axis
-                with gui.node_attribute(label="X Axis", attribute_type=gui.mvNode_Attr_Input,
+        # if not gui.does_item_exist("basic_plot_node"):
+        #
+        #     # close a menu window
+        #     gui.configure_item("right_click_menu_node_menu", show=False)
+        #
+        #     print(f"Menu Item: {sender}")
+        #
+        #     with gui.node(label="Basic plot node", parent="node_ground_node_tab", tag="basic_plot_node"):
+        #
+        #         # X axis
+        #         with gui.node_attribute(label="X Axis", attribute_type=gui.mvNode_Attr_Input,
                                         tag="basic_plot_x_input_node"):
                     gui.add_text("X Axis")
 
