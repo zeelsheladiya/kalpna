@@ -145,12 +145,12 @@ def basic_plot_node(sender, app_data, user_data):
 
             print(f"Menu Item: {sender}")
 
-            # with gui.node(label="Basic plot node", parent="node_ground_node_tab", tag="basic_plot_node"):
-            #
-            #     # X axis
-            #     with gui.node_attribute(label="X Axis", attribute_type=gui.mvNode_Attr_Input,
-            #                             tag="basic_plot_x_input_node"):
-            #         gui.add_text("X Axis")
+            with gui.node(label="Basic plot node", parent="node_ground_node_tab", tag="basic_plot_node"):
+
+                # X axis
+                with gui.node_attribute(label="X Axis", attribute_type=gui.mvNode_Attr_Input,
+                                        tag="basic_plot_x_input_node"):
+                    gui.add_text("X Axis")
 
                 # Y axis
                 with gui.node_attribute(label="Y Axis", attribute_type=gui.mvNode_Attr_Input,
