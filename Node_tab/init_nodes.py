@@ -153,15 +153,15 @@ def basic_plot_node(sender, app_data, user_data):
                     gui.add_text("X Axis")
 
                 # Y axis
-                with gui.node_attribute(label="Y Axis", attribute_type=gui.mvNode_Attr_Input,
-                                        tag="basic_plot_y_input_node"):
-                    gui.add_text("Y Axis")
-
-                with gui.node_attribute(label="plot Selection", attribute_type=gui.mvNode_Attr_Static,
-                                        tag="basic_plot_node_plot_type_combo"):
-                    # combo box for the type of plot
-                    gui.add_combo(list(PLOT_TYPE_LIST.values()), default_value="Line Plot", width=150,
-                                  tag="basic_plot_node_plot_type", label="Select Plot Type",
+                # with gui.node_attribute(label="Y Axis", attribute_type=gui.mvNode_Attr_Input,
+                #                         tag="basic_plot_y_input_node"):
+                #     gui.add_text("Y Axis")
+                #
+                # with gui.node_attribute(label="plot Selection", attribute_type=gui.mvNode_Attr_Static,
+                #                         tag="basic_plot_node_plot_type_combo"):
+                #     # combo box for the type of plot
+                #     gui.add_combo(list(PLOT_TYPE_LIST.values()), default_value="Line Plot", width=150,
+                #                   tag="basic_plot_node_plot_type", label="Select Plot Type",
                                   parent="basic_plot_node_plot_type_combo")
 
                 with gui.node_attribute(label="basic plot", attribute_type=gui.mvNode_Attr_Static,
