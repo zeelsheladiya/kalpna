@@ -90,11 +90,11 @@ def table_node(sender, app_data, user_data):
         node_exception_pop_up_msg_func(gui=gui)
 
 
-# column node
-def table_column_node(sender, app_data, user_data):
-    try:
-        gui = user_data["gui"]
-        data_table = user_data["Data_table"]
+# # column node
+# def table_column_node(sender, app_data, user_data):
+#     try:
+#         gui = user_data["gui"]
+#         data_table = user_data["Data_table"]
         col_name = user_data["col_name"]
 
         if not gui.does_item_exist(col_name + "_node"):
