@@ -29,21 +29,21 @@ gui.create_context()
 
 # Themes ==================================================================================================
 # global main theme
-# with gui.theme() as global_theme:
-#     with gui.theme_component(gui.mvAll):
-#         gui.add_theme_style(gui.mvStyleVar_FrameRounding, 5, category=gui.mvThemeCat_Core)
-#         gui.add_theme_style(gui.mvStyleVar_FrameBorderSize, 1, category=gui.mvThemeCat_Core)
-#         gui.add_theme_style(gui.mvStyleVar_ButtonTextAlign, x=0.50, y=0.50, category=gui.mvThemeCat_Core)
-#
-# # theme for green color text for a target text object
-# with gui.theme() as green_txt_color_theme:
-#     with gui.theme_component(gui.mvText):
-#         gui.add_theme_color(gui.mvThemeCol_Text, (0, 255, 0), category=gui.mvThemeCat_Core)
-#
-# # theme for red color text for a target text object
-# with gui.theme() as red_txt_color_theme:
-#     with gui.theme_component(gui.mvText):
-#         gui.add_theme_color(gui.mvThemeCol_Text, (255, 0, 0), category=gui.mvThemeCat_Core)
+with gui.theme() as global_theme:
+    with gui.theme_component(gui.mvAll):
+        gui.add_theme_style(gui.mvStyleVar_FrameRounding, 5, category=gui.mvThemeCat_Core)
+        gui.add_theme_style(gui.mvStyleVar_FrameBorderSize, 1, category=gui.mvThemeCat_Core)
+        gui.add_theme_style(gui.mvStyleVar_ButtonTextAlign, x=0.50, y=0.50, category=gui.mvThemeCat_Core)
+
+# theme for green color text for a target text object
+with gui.theme() as green_txt_color_theme:
+    with gui.theme_component(gui.mvText):
+        gui.add_theme_color(gui.mvThemeCol_Text, (0, 255, 0), category=gui.mvThemeCat_Core)
+
+# theme for red color text for a target text object
+with gui.theme() as red_txt_color_theme:
+    with gui.theme_component(gui.mvText):
+        gui.add_theme_color(gui.mvThemeCol_Text, (255, 0, 0), category=gui.mvThemeCat_Core)
 
 
 # event section ===========================================================================================
