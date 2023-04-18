@@ -56,22 +56,22 @@ def file_browse_for_table_callback(_, app_data):
     # print("App Data: ", app_data["file_path_name"])
     FILE_PATH = app_data["file_path_name"]
 
-    # file_type_name = gui.get_value("cb_file_type_main_tab")
-    #
-    # try:
-    #     if list(FILE_TYPE.values())[0] == FILE_TYPE[file_type_name]:
-    #         DATA_TABLE = pd.read_csv(FILE_PATH)
-    #
-    #     elif list(FILE_TYPE.values())[1] == FILE_TYPE[file_type_name]:
-    #         DATA_TABLE = pd.read_excel(FILE_PATH)
-    #
-    #     # print(DATA_TABLE)
-    #
-    #     gui.set_value("txt_file_log_main_tab", FILE_PATH)
-    #     gui.set_value("txt_file_selected_log", "File is Selected")
-    #     gui.bind_item_theme(TXT_FILE_SELECTION_LOG, green_txt_color_theme)
-    #
-    #     # table view
+    file_type_name = gui.get_value("cb_file_type_main_tab")
+
+    try:
+        if list(FILE_TYPE.values())[0] == FILE_TYPE[file_type_name]:
+            DATA_TABLE = pd.read_csv(FILE_PATH)
+
+        elif list(FILE_TYPE.values())[1] == FILE_TYPE[file_type_name]:
+            DATA_TABLE = pd.read_excel(FILE_PATH)
+
+        # print(DATA_TABLE)
+
+        gui.set_value("txt_file_log_main_tab", FILE_PATH)
+        gui.set_value("txt_file_selected_log", "File is Selected")
+        gui.bind_item_theme(TXT_FILE_SELECTION_LOG, green_txt_color_theme)
+
+        # table view
         main_tab_table_view_render(gui=gui, df=DATA_TABLE)
 
         # node tab ==========================================================
