@@ -91,17 +91,17 @@ def file_browse_for_table_callback(_, app_data):
 
 
 # browse button click event
-def btn_main_tab_browse_file_browse_callback():
-    global FILE_PATH, DATA_TABLE
-    # print("sender:- ", sender)
-    # print("refuser data:- ", user_data)
-
-    file_type_name = gui.get_value("cb_file_type_main_tab")
-
-    # browse file
-    with gui.file_dialog(directory_selector=False, callback=file_browse_for_table_callback, show=True,
-                         height=600, width=800):
-        gui.add_file_extension(f".{FILE_TYPE[file_type_name]}", color=(0, 255, 0))
+# def btn_main_tab_browse_file_browse_callback():
+#     global FILE_PATH, DATA_TABLE
+#     # print("sender:- ", sender)
+#     # print("refuser data:- ", user_data)
+#
+#     file_type_name = gui.get_value("cb_file_type_main_tab")
+#
+#     # browse file
+#     with gui.file_dialog(directory_selector=False, callback=file_browse_for_table_callback, show=True,
+#                          height=600, width=800):
+#         gui.add_file_extension(f".{FILE_TYPE[file_type_name]}", color=(0, 255, 0))
 
 
 # tab section==============================================================================================
