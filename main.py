@@ -130,16 +130,16 @@ with gui.window(tag="primary_window") as primary_win:
         # main tab
         with gui.tab(label="main tab", tag="main_tab"):
             init_main_tab()
-#
-# # GUI functions ==============================================================================================
-#
-# # gui.show_debug()
-# # gui.show_style_editor()
-# gui.bind_theme(global_theme)
-# gui.create_viewport(title='Kalpana')
-# gui.setup_dearpygui()
-# gui.show_viewport()
-# gui.maximize_viewport()
-# gui.set_primary_window("primary_window", True)
-# gui.start_dearpygui()
-# gui.destroy_context()
+
+# GUI functions ==============================================================================================
+
+# gui.show_debug()
+# gui.show_style_editor()
+gui.bind_theme(global_theme)
+gui.create_viewport(title='Kalpana')
+gui.setup_dearpygui()
+gui.show_viewport()
+gui.maximize_viewport()
+gui.set_primary_window("primary_window", True)
+gui.start_dearpygui()
+gui.destroy_context()
