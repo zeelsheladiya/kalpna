@@ -106,21 +106,21 @@ def btn_main_tab_browse_file_browse_callback():
 
 # tab section==============================================================================================
 # main initial tab
-def init_main_tab():
-    # file type sector
-    global TXT_FILE_SELECTION_LOG, FILE_TYPE
-
-    gui.add_combo(list(FILE_TYPE), default_value="CSV", width=400, tag="cb_file_type_main_tab",
-                  label="Select File Type")
-
-    # browse button
-    gui.add_button(label="Browse", callback=btn_main_tab_browse_file_browse_callback, user_data="btn_main_tab_browse",
-                   width=200)
-
-    # file selection section
-    gui.add_input_text(tag="txt_file_log_main_tab", enabled=False)
-    TXT_FILE_SELECTION_LOG = gui.add_text("File Not Selected", tag="txt_file_selected_log")
-    gui.bind_item_theme(TXT_FILE_SELECTION_LOG, red_txt_color_theme)
+# def init_main_tab():
+#     # file type sector
+#     global TXT_FILE_SELECTION_LOG, FILE_TYPE
+#
+#     gui.add_combo(list(FILE_TYPE), default_value="CSV", width=400, tag="cb_file_type_main_tab",
+#                   label="Select File Type")
+#
+#     # browse button
+#     gui.add_button(label="Browse", callback=btn_main_tab_browse_file_browse_callback, user_data="btn_main_tab_browse",
+#                    width=200)
+#
+#     # file selection section
+#     gui.add_input_text(tag="txt_file_log_main_tab", enabled=False)
+#     TXT_FILE_SELECTION_LOG = gui.add_text("File Not Selected", tag="txt_file_selected_log")
+#     gui.bind_item_theme(TXT_FILE_SELECTION_LOG, red_txt_color_theme)
 
 
 # main windows with tabs ====================================================================================
@@ -130,16 +130,16 @@ with gui.window(tag="primary_window") as primary_win:
         # main tab
         with gui.tab(label="main tab", tag="main_tab"):
             init_main_tab()
-
-# GUI functions ==============================================================================================
-
-# gui.show_debug()
-# gui.show_style_editor()
-gui.bind_theme(global_theme)
-gui.create_viewport(title='Kalpana')
-gui.setup_dearpygui()
-gui.show_viewport()
-gui.maximize_viewport()
-gui.set_primary_window("primary_window", True)
-gui.start_dearpygui()
-gui.destroy_context()
+#
+# # GUI functions ==============================================================================================
+#
+# # gui.show_debug()
+# # gui.show_style_editor()
+# gui.bind_theme(global_theme)
+# gui.create_viewport(title='Kalpana')
+# gui.setup_dearpygui()
+# gui.show_viewport()
+# gui.maximize_viewport()
+# gui.set_primary_window("primary_window", True)
+# gui.start_dearpygui()
+# gui.destroy_context()
