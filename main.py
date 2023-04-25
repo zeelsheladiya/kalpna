@@ -1,27 +1,27 @@
 import dearpygui.dearpygui as gui
 import pandas as pd
 
-# # internal file importing ======================================================================
-#
-# from Popups.Popups import *
-# from Msg_Str.msg_str import *
-# from Main_tab.table_rander import *
-# from Node_tab.node_render import *
-#
-# # global variable ============================================================================
-#
-# FILE_PATH: str
-#
-# FILE_TYPE = {
-#     "CSV": "csv",
-#     "Excel": "xlsx"
-# }
-#
-# DATA_TABLE: pd.DataFrame()
-#
-# # global component =======================================================================================
-#
-# TXT_FILE_SELECTION_LOG: int
+# internal file importing ======================================================================
+
+from Popups.Popups import *
+from Msg_Str.msg_str import *
+from Main_tab.table_rander import *
+from Node_tab.node_render import *
+
+# global variable ============================================================================
+
+FILE_PATH: str
+
+FILE_TYPE = {
+    "CSV": "csv",
+    "Excel": "xlsx"
+}
+
+DATA_TABLE: pd.DataFrame()
+
+# global component =======================================================================================
+
+TXT_FILE_SELECTION_LOG: int
 
 # ==============================================================================================
 
