@@ -24,6 +24,31 @@ def sort_callback(sender, sort_specs, user_data):
         first_cell = gui.get_item_children(row, 1)[0]
         sortable_list.append([row, gui.get_value(first_cell)])
 
+    def sort_callbackto(sender, sort_specs, user_data):
+        gui = user_data
+        # sort_specs scenarios:
+        #   1. no sorting -> sort_specs == None
+        #   2. single sorting -> sort_specs == [[column_id, direction]]
+        #   3. multi sorting -> sort_specs == [[col umn_id, direction], [column_id, direction], ...]
+        #
+        # notes:
+        #   1. direction is ascending if == 1
+        #   2. direction is ascending if == -1
+
+        # no sorting case
+        if sort_specs is None:
+            return
+
+        rows = gui.get_item_children(sender, 1)
+
+        # create a list that can be sorted based on first cell
+        # value, keeping track of row and value used to sort
+        sortable_list = []
+        for row in rows:
+            first_cell = gui.get_item_children(row, 1)[0]
+            sortable_list.append([row, gui.get_value(first_cell)])
+
+
     def _sorter(e):
         return e[1]
 
